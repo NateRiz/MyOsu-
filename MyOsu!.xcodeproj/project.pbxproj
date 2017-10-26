@@ -14,6 +14,7 @@
 		E120E9E71FA2495A0083DAD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E120E9E51FA2495A0083DAD2 /* LaunchScreen.storyboard */; };
 		E120E9F21FA2495A0083DAD2 /* MyOsu_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120E9F11FA2495A0083DAD2 /* MyOsu_Tests.swift */; };
 		E120E9FD1FA2495A0083DAD2 /* MyOsu_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120E9FC1FA2495A0083DAD2 /* MyOsu_UITests.swift */; };
+		E120EA0B1FA261540083DAD2 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120EA0A1FA261540083DAD2 /* SearchVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		E120E9F81FA2495A0083DAD2 /* MyOsu!UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MyOsu!UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E120E9FC1FA2495A0083DAD2 /* MyOsu_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOsu_UITests.swift; sourceTree = "<group>"; };
 		E120E9FE1FA2495A0083DAD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E120EA0A1FA261540083DAD2 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				E120E9E31FA2495A0083DAD2 /* Assets.xcassets */,
 				E120E9E51FA2495A0083DAD2 /* LaunchScreen.storyboard */,
 				E120E9E81FA2495A0083DAD2 /* Info.plist */,
+				E120EA0A1FA261540083DAD2 /* SearchVC.swift */,
 			);
 			path = "MyOsu!";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E120EA0B1FA261540083DAD2 /* SearchVC.swift in Sources */,
 				E120E9DF1FA2495A0083DAD2 /* ViewController.swift in Sources */,
 				E120E9DD1FA2495A0083DAD2 /* AppDelegate.swift in Sources */,
 			);
