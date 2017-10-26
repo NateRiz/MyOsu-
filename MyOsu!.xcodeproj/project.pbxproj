@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050809F9A4153F4F283A6326 /* Pods_MyOsu_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AEBFBC80912628FA227FF6C /* Pods_MyOsu_.framework */; };
+		37B6F41FEE8E284B5E88F003 /* Pods_MyOsu_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC129F3469E042D5929CC147 /* Pods_MyOsu_Tests.framework */; };
+		D9EA080F447720CEDC841E31 /* Pods_MyOsu_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BDEC106AF13C6F5CC7C2A7D /* Pods_MyOsu_UITests.framework */; };
 		E120E9DD1FA2495A0083DAD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120E9DC1FA2495A0083DAD2 /* AppDelegate.swift */; };
 		E120E9DF1FA2495A0083DAD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120E9DE1FA2495A0083DAD2 /* ViewController.swift */; };
 		E120E9E21FA2495A0083DAD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E120E9E01FA2495A0083DAD2 /* Main.storyboard */; };
@@ -35,6 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BDEC106AF13C6F5CC7C2A7D /* Pods_MyOsu_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyOsu_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AEBFBC80912628FA227FF6C /* Pods_MyOsu_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyOsu_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E93EA6B8A4E03ABF6A9D60E /* Pods-MyOsu!Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOsu!Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyOsu!Tests/Pods-MyOsu!Tests.release.xcconfig"; sourceTree = "<group>"; };
+		B26961648CB1E0AD6FA8EE0B /* Pods-MyOsu!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOsu!.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyOsu!/Pods-MyOsu!.release.xcconfig"; sourceTree = "<group>"; };
+		B532FC0EC6A127F8F955CE83 /* Pods-MyOsu!Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOsu!Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyOsu!Tests/Pods-MyOsu!Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		D661B48E2F0B43EE9CC8B454 /* Pods-MyOsu!UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOsu!UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyOsu!UITests/Pods-MyOsu!UITests.release.xcconfig"; sourceTree = "<group>"; };
+		DC129F3469E042D5929CC147 /* Pods_MyOsu_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyOsu_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E120E9D91FA2495A0083DAD2 /* MyOsu!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyOsu!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E120E9DC1FA2495A0083DAD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E120E9DE1FA2495A0083DAD2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +59,8 @@
 		E120E9FC1FA2495A0083DAD2 /* MyOsu_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOsu_UITests.swift; sourceTree = "<group>"; };
 		E120E9FE1FA2495A0083DAD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E120EA0A1FA261540083DAD2 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		E2EE2DE92D78BC7587944F7B /* Pods-MyOsu!UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOsu!UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyOsu!UITests/Pods-MyOsu!UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E890117BBE519280609F3554 /* Pods-MyOsu!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOsu!.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyOsu!/Pods-MyOsu!.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				050809F9A4153F4F283A6326 /* Pods_MyOsu_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37B6F41FEE8E284B5E88F003 /* Pods_MyOsu_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9EA080F447720CEDC841E31 /* Pods_MyOsu_UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5AC06CC68B8F10A06CCA7F3E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E890117BBE519280609F3554 /* Pods-MyOsu!.debug.xcconfig */,
+				B26961648CB1E0AD6FA8EE0B /* Pods-MyOsu!.release.xcconfig */,
+				B532FC0EC6A127F8F955CE83 /* Pods-MyOsu!Tests.debug.xcconfig */,
+				6E93EA6B8A4E03ABF6A9D60E /* Pods-MyOsu!Tests.release.xcconfig */,
+				E2EE2DE92D78BC7587944F7B /* Pods-MyOsu!UITests.debug.xcconfig */,
+				D661B48E2F0B43EE9CC8B454 /* Pods-MyOsu!UITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9ACFB93512AA380987AC2E35 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2AEBFBC80912628FA227FF6C /* Pods_MyOsu_.framework */,
+				DC129F3469E042D5929CC147 /* Pods_MyOsu_Tests.framework */,
+				0BDEC106AF13C6F5CC7C2A7D /* Pods_MyOsu_UITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E120E9D01FA2495A0083DAD2 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +121,8 @@
 				E120E9F01FA2495A0083DAD2 /* MyOsu!Tests */,
 				E120E9FB1FA2495A0083DAD2 /* MyOsu!UITests */,
 				E120E9DA1FA2495A0083DAD2 /* Products */,
+				5AC06CC68B8F10A06CCA7F3E /* Pods */,
+				9ACFB93512AA380987AC2E35 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,9 +175,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E120EA011FA2495A0083DAD2 /* Build configuration list for PBXNativeTarget "MyOsu!" */;
 			buildPhases = (
+				626B6263616DA31466AF54E8 /* [CP] Check Pods Manifest.lock */,
 				E120E9D51FA2495A0083DAD2 /* Sources */,
 				E120E9D61FA2495A0083DAD2 /* Frameworks */,
 				E120E9D71FA2495A0083DAD2 /* Resources */,
+				704AF79D6D5E96B7215C0596 /* [CP] Embed Pods Frameworks */,
+				36EA4F6563172833D048ADF3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E120EA041FA2495A0083DAD2 /* Build configuration list for PBXNativeTarget "MyOsu!Tests" */;
 			buildPhases = (
+				BE3CCE053502BC98121AE04D /* [CP] Check Pods Manifest.lock */,
 				E120E9E91FA2495A0083DAD2 /* Sources */,
 				E120E9EA1FA2495A0083DAD2 /* Frameworks */,
 				E120E9EB1FA2495A0083DAD2 /* Resources */,
+				1C085C1221F585416061AF9F /* [CP] Embed Pods Frameworks */,
+				C9E5BAB2CA3D43A5A9BA613F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E120EA071FA2495A0083DAD2 /* Build configuration list for PBXNativeTarget "MyOsu!UITests" */;
 			buildPhases = (
+				67920539E5B1A5C5F48CC1CD /* [CP] Check Pods Manifest.lock */,
 				E120E9F41FA2495A0083DAD2 /* Sources */,
 				E120E9F51FA2495A0083DAD2 /* Frameworks */,
 				E120E9F61FA2495A0083DAD2 /* Resources */,
+				14ACA4CC8B2BD2D69AE68A44 /* [CP] Embed Pods Frameworks */,
+				50BBACF4C21551247927F774 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,6 +305,159 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14ACA4CC8B2BD2D69AE68A44 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyOsu!UITests/Pods-MyOsu!UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1C085C1221F585416061AF9F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MyOsu!Tests/Pods-MyOsu!Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyOsu!Tests/Pods-MyOsu!Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		36EA4F6563172833D048ADF3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyOsu!/Pods-MyOsu!-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		50BBACF4C21551247927F774 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyOsu!UITests/Pods-MyOsu!UITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		626B6263616DA31466AF54E8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyOsu!-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		67920539E5B1A5C5F48CC1CD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyOsu!UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		704AF79D6D5E96B7215C0596 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MyOsu!/Pods-MyOsu!-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyOsu!/Pods-MyOsu!-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE3CCE053502BC98121AE04D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyOsu!Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9E5BAB2CA3D43A5A9BA613F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyOsu!Tests/Pods-MyOsu!Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E120E9D51FA2495A0083DAD2 /* Sources */ = {
@@ -428,6 +630,7 @@
 		};
 		E120EA021FA2495A0083DAD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E890117BBE519280609F3554 /* Pods-MyOsu!.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -443,6 +646,7 @@
 		};
 		E120EA031FA2495A0083DAD2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B26961648CB1E0AD6FA8EE0B /* Pods-MyOsu!.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -458,6 +662,7 @@
 		};
 		E120EA051FA2495A0083DAD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B532FC0EC6A127F8F955CE83 /* Pods-MyOsu!Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -475,6 +680,7 @@
 		};
 		E120EA061FA2495A0083DAD2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E93EA6B8A4E03ABF6A9D60E /* Pods-MyOsu!Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -492,6 +698,7 @@
 		};
 		E120EA081FA2495A0083DAD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2EE2DE92D78BC7587944F7B /* Pods-MyOsu!UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -508,6 +715,7 @@
 		};
 		E120EA091FA2495A0083DAD2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D661B48E2F0B43EE9CC8B454 /* Pods-MyOsu!UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

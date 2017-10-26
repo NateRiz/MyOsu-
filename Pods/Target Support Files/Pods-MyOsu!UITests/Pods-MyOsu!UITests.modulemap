@@ -1,0 +1,6 @@
+framework module Pods_MyOsu_UITests {
+  umbrella header "Pods-MyOsu!UITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
