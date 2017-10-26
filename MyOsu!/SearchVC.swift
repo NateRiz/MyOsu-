@@ -8,15 +8,18 @@
 
 import UIKit
 
-class SearchVC: UIViewController{//}, UISearchBarDelegate{
+class SearchVC: UIViewController, UISearchBarDelegate{
 
     
-    @IBOutlet weak var OsuSearchBar: UIStackView!
+    
+    @IBOutlet weak var OsuSearchBar: UISearchBar!
     @IBOutlet weak var SearchResultStack: UIStackView!
+    
+    let API_URL = "https://osu.ppy.sh/api/"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //OsuSearchBar.delegate = self
+        OsuSearchBar.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -26,9 +29,9 @@ class SearchVC: UIViewController{//}, UISearchBarDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    //func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //print(searchBar.text)
-    //}
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+    }
     
 
     /*

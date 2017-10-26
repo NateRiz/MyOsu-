@@ -54,7 +54,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="OsuSearchBar" destination="jBw-8u-6kU" id="yAZ-cN-4uT"/>
+                        <outlet property="OsuSearchBar" destination="tuf-7j-f3r" id="fYU-ah-tgQ"/>
                         <outlet property="SearchResultStack" destination="jBw-8u-6kU" id="Fqe-TO-EEw"/>
                     </connections>
                 </viewController>
