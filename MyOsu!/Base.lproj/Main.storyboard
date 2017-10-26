@@ -62,10 +62,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Search ResultVC-->
         <scene sceneID="R3o-ny-lib">
             <objects>
-                <viewController id="ueg-Li-Kb0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchResultVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ueg-Li-Kb0" customClass="SearchResultVC" customModule="MyOsu_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zak-kS-dra">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,6 +89,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lPy-be-lcy"/>
                     </view>
+                    <connections>
+                        <outlet property="avatar" destination="Ggv-3p-f5y" id="5ik-h6-HNP"/>
+                        <outlet property="username" destination="0ib-qD-hrj" id="s20-tk-rt3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OQx-8e-1DN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

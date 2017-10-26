@@ -9,10 +9,15 @@
 import UIKit
 
 class SearchResultVC: UIViewController {
-
+    
+    var json = [String:Any]()
+    
+    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var avatar: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.CreateProfile()
         // Do any additional setup after loading the view.
     }
 
@@ -22,6 +27,16 @@ class SearchResultVC: UIViewController {
     }
     
 
+    func CreateProfile()
+    {
+        if let name = self.json["username"] as? String{
+            DispatchQueue.main.async {
+                self.username.text = name
+            }
+        }
+
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -39,6 +39,13 @@ class SearchVC: UIViewController, UISearchBarDelegate{
                 print("In...")
                 if let json = response.result.value {
                     print("JSON: \(json)") // serialized json response
+                    let searchResultVC = self.storyboard?.instantiateViewController(withIdentifier: "searchResultVC") as! SearchResultVC
+                    searchResultVC.json = (json as! [Any])[0] as! [String:Any]
+                    self.present(searchResultVC, animated: true, completion: nil)
+                    
+                    
+                    
+                    
                 }
                 
             }
