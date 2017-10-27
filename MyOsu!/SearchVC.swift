@@ -37,9 +37,9 @@ class SearchVC: UIViewController, UISearchBarDelegate{
             Alamofire.request(self.API_URL + "get_user?" + "&k=374c71b25b90368c6a0f3401983325ff98443313&u="+query).responseJSON { response in
                 if let json = response.result.value {
                     print("JSON: \(json)") // serialized json response
-                    let searchResultVC = self.storyboard?.instantiateViewController(withIdentifier: "searchResultVC") as! SearchResultVC
-                    searchResultVC.json = (json as! [Any])[0] as! [String:Any]
-                    self.present(searchResultVC, animated: true, completion: nil)
+                    let userPageVC = self.storyboard?.instantiateViewController(withIdentifier: "UserPageControl") as! UserPageVC
+                    userPageVC.json = (json as! [Any])[0] as! [String:Any]
+                    self.present(userPageVC, animated: true, completion: nil)
                     
                     
                     

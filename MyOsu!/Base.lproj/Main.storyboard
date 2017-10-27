@@ -65,7 +65,7 @@
         <!--Search ResultVC-->
         <scene sceneID="R3o-ny-lib">
             <objects>
-                <viewController storyboardIdentifier="searchResultVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ueg-Li-Kb0" customClass="SearchResultVC" customModule="MyOsu_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchResultVC0" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ueg-Li-Kb0" customClass="SearchResultVC" customModule="MyOsu_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zak-kS-dra">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,7 +118,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OQx-8e-1DN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="989.60000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1897" y="-245"/>
+        </scene>
+        <!--User Detailed StatsVC-->
+        <scene sceneID="vQh-XS-VPE">
+            <objects>
+                <viewController storyboardIdentifier="searchResultVC1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wAD-Mr-lz1" customClass="UserDetailedStatsVC" customModule="MyOsu_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VDU-eZ-Vdd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="aet-e5-Ux3"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Uah-WJ-3xm" appends="YES" id="39p-di-xdd"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4RS-bh-O1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="Uah-WJ-3xm"/>
+            </objects>
+            <point key="canvasLocation" x="1897" y="441"/>
+        </scene>
+        <!--User PageVC-->
+        <scene sceneID="VsN-bJ-SxR">
+            <objects>
+                <pageViewController storyboardIdentifier="UserPageControl" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="arR-8e-jD5" customClass="UserPageVC" customModule="MyOsu_" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ljJ-E1-zn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="881" y="134"/>
         </scene>
     </scenes>
     <resources>

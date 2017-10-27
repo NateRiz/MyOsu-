@@ -19,6 +19,8 @@
 		E120E9FD1FA2495A0083DAD2 /* MyOsu_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120E9FC1FA2495A0083DAD2 /* MyOsu_UITests.swift */; };
 		E120EA0B1FA261540083DAD2 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120EA0A1FA261540083DAD2 /* SearchVC.swift */; };
 		E120EA111FA283FD0083DAD2 /* SearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120EA101FA283FD0083DAD2 /* SearchResultVC.swift */; };
+		E120EA131FA2DCC20083DAD2 /* UserPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120EA121FA2DCC10083DAD2 /* UserPageVC.swift */; };
+		E120EA151FA2E96C0083DAD2 /* UserDetailedStatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120EA141FA2E96C0083DAD2 /* UserDetailedStatsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		E120E9FE1FA2495A0083DAD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E120EA0A1FA261540083DAD2 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		E120EA101FA283FD0083DAD2 /* SearchResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVC.swift; sourceTree = "<group>"; };
+		E120EA121FA2DCC10083DAD2 /* UserPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageVC.swift; sourceTree = "<group>"; };
+		E120EA141FA2E96C0083DAD2 /* UserDetailedStatsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailedStatsVC.swift; sourceTree = "<group>"; };
 		E2EE2DE92D78BC7587944F7B /* Pods-MyOsu!UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOsu!UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyOsu!UITests/Pods-MyOsu!UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E890117BBE519280609F3554 /* Pods-MyOsu!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOsu!.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyOsu!/Pods-MyOsu!.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,6 +153,8 @@
 				E120E9E81FA2495A0083DAD2 /* Info.plist */,
 				E120EA0A1FA261540083DAD2 /* SearchVC.swift */,
 				E120EA101FA283FD0083DAD2 /* SearchResultVC.swift */,
+				E120EA121FA2DCC10083DAD2 /* UserPageVC.swift */,
+				E120EA141FA2E96C0083DAD2 /* UserDetailedStatsVC.swift */,
 			);
 			path = "MyOsu!";
 			sourceTree = "<group>";
@@ -467,8 +473,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E120EA131FA2DCC20083DAD2 /* UserPageVC.swift in Sources */,
 				E120EA0B1FA261540083DAD2 /* SearchVC.swift in Sources */,
 				E120EA111FA283FD0083DAD2 /* SearchResultVC.swift in Sources */,
+				E120EA151FA2E96C0083DAD2 /* UserDetailedStatsVC.swift in Sources */,
 				E120E9DF1FA2495A0083DAD2 /* ViewController.swift in Sources */,
 				E120E9DD1FA2495A0083DAD2 /* AppDelegate.swift in Sources */,
 			);
