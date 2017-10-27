@@ -41,9 +41,6 @@ class SearchVC: UIViewController, UISearchBarDelegate{
                     userPageVC.json = (json as! [Any])[0] as! [String:Any]
                     self.present(userPageVC, animated: true, completion: nil)
                     
-                    
-                    
-                    
                 }
                 
             }
@@ -51,6 +48,7 @@ class SearchVC: UIViewController, UISearchBarDelegate{
         
     }
     
+
 
     /*
     // MARK: - Navigation
