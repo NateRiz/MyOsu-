@@ -51,7 +51,10 @@ class UserPageVC: UIPageViewController{
                 srvc.json = self.json
             }
             else if let srvc = searchResultVC as? UserDetailedStatsVC{
-                srvc.json = self.json
+                if let events = self.json["events"] as? NSArray{
+                    srvc.history = events
+                }
+                
             }
             views.append(searchResultVC)
             

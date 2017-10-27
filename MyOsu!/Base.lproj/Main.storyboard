@@ -225,7 +225,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="35" id="fHT-CD-LKH">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="35" id="fHT-CD-LKH" customClass="SongCell" customModule="MyOsu_" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="35"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fHT-CD-LKH" id="zJP-J4-gIe">
@@ -247,6 +247,10 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </tableViewCellContentView>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <connections>
+                                                            <outlet property="SongImage" destination="IuG-zd-Tdg" id="rTr-2M-In5"/>
+                                                            <outlet property="SongName" destination="hhF-wF-JYo" id="4cn-rP-g0S"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
@@ -295,7 +299,7 @@
                         <viewLayoutGuide key="safeArea" id="aet-e5-Ux3"/>
                     </view>
                     <connections>
-                        <outlet property="DetailStatsTable" destination="pMR-uo-5ih" id="f81-u5-LDd"/>
+                        <outlet property="SongTable" destination="e6e-ct-XaF" id="zhT-8C-Y4V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4RS-bh-O1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
