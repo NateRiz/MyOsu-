@@ -8,9 +8,10 @@
 
 import UIKit
 
-class UserPageVC: UIPageViewController {
 
 
+class UserPageVC: UIPageViewController{
+    
     var views = [UIViewController]()
     var currentPage = 0
     var json = [String:Any]()
@@ -32,6 +33,8 @@ class UserPageVC: UIPageViewController {
         
         self.populateViews()
         setViewControllers([views[currentPage]], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        
+
         // Do any additional setup after loading the view.
     }
 
@@ -80,7 +83,7 @@ class UserPageVC: UIPageViewController {
         return r >= 0 ? r : r + n
     }
 
-    
+
 
 
 }

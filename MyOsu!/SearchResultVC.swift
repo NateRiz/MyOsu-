@@ -8,10 +8,24 @@
 
 import UIKit
 
-class SearchResultVC: UIViewController {
+class StatsCell: UITableViewCell{
+    
+    @IBOutlet weak var StatLabel: UILabel!
+    @IBOutlet weak var InfoLabel: UILabel!
+    
+}
+
+class SearchResultVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
+    
+    
+    let statNames = ["Ranked Stats", "Hit Accuracy", "Play Count", "Total Score", "Current Level"]
+    var userStats = [String]()
+    let cellReuseIdentifier = "DSCell"
+    
     
     var json = [String:Any]()
     
+    @IBOutlet weak var DetailStatsTable: UITableView!
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var globalRank: UILabel!
@@ -21,6 +35,9 @@ class SearchResultVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.CreateProfile()
+        self.DetailStatsTable.delegate = self
+        self.DetailStatsTable.dataSource = self
+        self.PopulateUserStats()
         // Do any additional setup after loading the view.
     }
 
@@ -84,14 +101,32 @@ class SearchResultVC: UIViewController {
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.statNames.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:StatsCell = self.DetailStatsTable.dequeueReusableCell(withIdentifier: self.cellReuseIdentifier) as! StatsCell
+        
+        cell.StatLabel.text = self.statNames[indexPath.row]
+        cell.InfoLabel.text = self.userStats[indexPath.row]
+        cell.alpha = 0
+        
+        return cell
+    }
+    
+    func PopulateUserStats(){
+        guard let ranked_score = self.json["ranked_score"] as? String else {return}
+        guard let accuracy = self.json["accuracy"] as? String else {return}
+        guard let playcount = self.json["playcount"] as? String else {return}
+        guard let total_score = self.json["total_score"] as? String else {return}
+        guard let level = self.json["level"] as? String else {return}
+        self.userStats.append(ranked_score)
+        self.userStats.append(accuracy)
+        self.userStats.append(playcount)
+        self.userStats.append(total_score)
+        self.userStats.append(String(Int(Float(level)!)))
+    }
 
 }
