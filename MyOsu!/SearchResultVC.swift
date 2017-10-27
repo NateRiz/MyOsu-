@@ -46,7 +46,12 @@ class SearchResultVC: UIViewController , UITableViewDelegate, UITableViewDataSou
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func CloseButton(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
     func CreateProfile()
     {
         if let name = self.json["username"] as? String{
