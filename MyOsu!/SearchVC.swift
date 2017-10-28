@@ -13,6 +13,9 @@ class SearchVC: UIViewController, UISearchBarDelegate{
 
     
     
+
+    @IBOutlet weak var BeatmapButton: UIButton!
+    @IBOutlet weak var UserButton: UIButton!
     @IBOutlet weak var NoResultsLabel: UIView!
     @IBOutlet weak var OsuSearchBar: UISearchBar!
     
@@ -31,6 +34,17 @@ class SearchVC: UIViewController, UISearchBarDelegate{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func BeatmapSearchButton(_ sender: Any) {
+        self.BeatmapButton.tintColor = UIColor.yellow
+        self.UserButton.tintColor = UIColor.white
+        print("bm")
+    }
+    @IBAction func UserSearchButton(_ sender: Any) {
+        self.UserButton.tintColor = UIColor.yellow
+        self.BeatmapButton.tintColor = UIColor.white
+        print("u")
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
