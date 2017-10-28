@@ -282,6 +282,26 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJe-Qr-nH1">
+                                                <rect key="frame" x="67" y="322" width="239" height="20.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This user has no recent history." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBi-Ds-gPp">
+                                                        <rect key="frame" x="0.0" y="0.0" width="239" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="zBi-Ds-gPp" firstAttribute="leading" secondItem="MJe-Qr-nH1" secondAttribute="leading" id="0FV-0Y-1fZ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="zBi-Ds-gPp" secondAttribute="bottom" id="66J-nW-nAW"/>
+                                                    <constraint firstItem="zBi-Ds-gPp" firstAttribute="top" secondItem="MJe-Qr-nH1" secondAttribute="top" id="DQy-7m-HO7"/>
+                                                    <constraint firstItem="zBi-Ds-gPp" firstAttribute="width" secondItem="MJe-Qr-nH1" secondAttribute="width" id="HfW-wQ-RVc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="zBi-Ds-gPp" secondAttribute="trailing" id="JGJ-KE-rTr"/>
+                                                    <constraint firstItem="zBi-Ds-gPp" firstAttribute="height" secondItem="MJe-Qr-nH1" secondAttribute="height" id="u32-mI-tjA"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -291,6 +311,7 @@
                                             <constraint firstAttribute="trailing" secondItem="e6e-ct-XaF" secondAttribute="trailing" id="S4r-YF-6f7"/>
                                             <constraint firstItem="e6e-ct-XaF" firstAttribute="leading" secondItem="djx-l9-EJj" secondAttribute="leading" id="dMl-5I-de5"/>
                                             <constraint firstItem="e6e-ct-XaF" firstAttribute="top" secondItem="K72-tS-F9g" secondAttribute="bottom" constant="15" id="eEd-Lw-KBY"/>
+                                            <constraint firstItem="MJe-Qr-nH1" firstAttribute="top" secondItem="K72-tS-F9g" secondAttribute="bottom" constant="244" id="jlY-K7-yfD"/>
                                             <constraint firstItem="e6e-ct-XaF" firstAttribute="width" secondItem="djx-l9-EJj" secondAttribute="width" id="kXS-KB-I8j"/>
                                             <constraint firstItem="K72-tS-F9g" firstAttribute="leading" secondItem="djx-l9-EJj" secondAttribute="leading" id="nhV-02-zKO"/>
                                             <constraint firstItem="HJ2-Wm-fns" firstAttribute="leading" secondItem="K72-tS-F9g" secondAttribute="trailing" constant="25" id="qTD-62-3AW"/>
@@ -310,16 +331,20 @@
                         <color key="backgroundColor" red="1" green="0.69007570200000001" blue="0.91482492630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="MJe-Qr-nH1" firstAttribute="leading" secondItem="aet-e5-Ux3" secondAttribute="leading" constant="67" id="HNG-jj-dam"/>
                             <constraint firstItem="aet-e5-Ux3" firstAttribute="bottom" secondItem="2nR-dt-ZNq" secondAttribute="bottom" id="N3v-ff-wmg"/>
                             <constraint firstItem="2nR-dt-ZNq" firstAttribute="leading" secondItem="aet-e5-Ux3" secondAttribute="leading" id="eGb-u9-46V"/>
                             <constraint firstItem="aet-e5-Ux3" firstAttribute="trailing" secondItem="HJ2-Wm-fns" secondAttribute="trailing" constant="8" id="fGO-rC-xfx"/>
                             <constraint firstItem="aet-e5-Ux3" firstAttribute="trailing" secondItem="2nR-dt-ZNq" secondAttribute="trailing" id="kRC-2x-Ju6"/>
+                            <constraint firstItem="aet-e5-Ux3" firstAttribute="trailing" secondItem="MJe-Qr-nH1" secondAttribute="trailing" constant="69" id="kWd-sR-aLb"/>
+                            <constraint firstItem="aet-e5-Ux3" firstAttribute="bottom" secondItem="MJe-Qr-nH1" secondAttribute="bottom" constant="324.5" id="lPc-9d-uc1"/>
                             <constraint firstItem="HJ2-Wm-fns" firstAttribute="top" secondItem="aet-e5-Ux3" secondAttribute="top" constant="8" id="nQx-E3-sbz"/>
                             <constraint firstItem="aet-e5-Ux3" firstAttribute="top" secondItem="2nR-dt-ZNq" secondAttribute="top" constant="20" id="vwW-Yb-sqH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aet-e5-Ux3"/>
                     </view>
                     <connections>
+                        <outlet property="NoHistoryLabel" destination="MJe-Qr-nH1" id="FqL-u8-4A4"/>
                         <outlet property="SongTable" destination="e6e-ct-XaF" id="zhT-8C-Y4V"/>
                     </connections>
                 </viewController>

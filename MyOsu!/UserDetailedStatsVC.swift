@@ -24,7 +24,9 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
     let cellReuseIdentifier = "SongCell"
     let API_URL = "https://osu.ppy.sh/api/"
 
+    @IBOutlet weak var NoHistoryLabel: UIView!
     @IBOutlet weak var SongTable: UITableView!
+    
     var history = NSArray()
     
     override func viewDidLoad() {
@@ -32,7 +34,15 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
         self.SongTable.delegate = self
         self.SongTable.dataSource = self
         self.SongTable.rowHeight = 80
-        self.PopulateSongNames()
+        if self.history.count > 0{
+            self.NoHistoryLabel.isHidden = true
+            self.SongTable.isHidden = false
+            self.PopulateSongNames()
+            
+        }else{
+            self.NoHistoryLabel.isHidden = false
+            self.SongTable.isHidden = true
+        }
         
 
         // Do any additional setup after loading the view.
