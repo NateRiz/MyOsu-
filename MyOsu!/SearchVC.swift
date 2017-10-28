@@ -13,8 +13,9 @@ class SearchVC: UIViewController, UISearchBarDelegate{
 
     
     
+    @IBOutlet weak var NoResultsLabel: UIView!
     @IBOutlet weak var OsuSearchBar: UISearchBar!
-    @IBOutlet weak var SearchResultStack: UIStackView!
+    
     
     let API_URL = "https://osu.ppy.sh/api/"
     
@@ -42,15 +43,22 @@ class SearchVC: UIViewController, UISearchBarDelegate{
                         if jsonArray.count > 0{
                             if let jsonDict = jsonArray[0] as? [String:Any]{
                                 userPageVC.json = jsonDict
+                                self.NoResultsLabel.isHidden = true
                                 self.present(userPageVC, animated: true, completion: nil)
                             }else{
-                                print("NO!")
+                                self.NoResultsLabel.isHidden = false
                             }
+                        }else{
+                            self.NoResultsLabel.isHidden = false
                         }
+                    }else{
+                        self.NoResultsLabel.isHidden = false
                     }
                     
 
                     
+                }else{
+                    self.NoResultsLabel.isHidden = false
                 }
                 
             }
