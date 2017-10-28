@@ -78,7 +78,7 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
                         self.SongTable.endUpdates()
                         group.leave()
                     }
-                    )//img = https://b.ppy.sh/thumb/642845l.jpg
+                    )
                 }
             }
         }
