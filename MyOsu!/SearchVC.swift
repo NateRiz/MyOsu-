@@ -38,8 +38,18 @@ class SearchVC: UIViewController, UISearchBarDelegate{
                 if let json = response.result.value {
                     //print("JSON: \(json)") // serialized json response
                     let userPageVC = self.storyboard?.instantiateViewController(withIdentifier: "UserPageControl") as! UserPageVC
-                    userPageVC.json = (json as! [Any])[0] as! [String:Any]
-                    self.present(userPageVC, animated: true, completion: nil)
+                    if let jsonArray = json as? NSArray{
+                        if jsonArray.count > 0{
+                            if let jsonDict = jsonArray[0] as? [String:Any]{
+                                userPageVC.json = jsonDict
+                                self.present(userPageVC, animated: true, completion: nil)
+                            }else{
+                                print("NO!")
+                            }
+                        }
+                    }
+                    
+
                     
                 }
                 
