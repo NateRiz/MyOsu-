@@ -18,6 +18,7 @@ class SearchVC: UIViewController, UISearchBarDelegate{
     @IBOutlet weak var UserButton: UIButton!
     @IBOutlet weak var NoResultsLabel: UIView!
     @IBOutlet weak var OsuSearchBar: UISearchBar!
+    var selected = ""
     
     
     let API_URL = "https://osu.ppy.sh/api/"
@@ -25,6 +26,8 @@ class SearchVC: UIViewController, UISearchBarDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         OsuSearchBar.delegate = self
+        self.UserButton.tintColor = UIColor.yellow
+        self.selected="User"
         
 
 
@@ -39,45 +42,49 @@ class SearchVC: UIViewController, UISearchBarDelegate{
     @IBAction func BeatmapSearchButton(_ sender: Any) {
         self.BeatmapButton.tintColor = UIColor.yellow
         self.UserButton.tintColor = UIColor.white
-        print("bm")
+        self.selected = "Beatmap"
     }
     @IBAction func UserSearchButton(_ sender: Any) {
         self.UserButton.tintColor = UIColor.yellow
         self.BeatmapButton.tintColor = UIColor.white
-        print("u")
+        self.selected = "User"
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let query = searchBar.text{
-            Alamofire.request(self.API_URL + "get_user?" + "&k=374c71b25b90368c6a0f3401983325ff98443313&event_days=31&u="+query).responseJSON { response in
-                if let json = response.result.value {
-                    //print("JSON: \(json)") // serialized json response
-                    let userPageVC = self.storyboard?.instantiateViewController(withIdentifier: "UserPageControl") as! UserPageVC
-                    if let jsonArray = json as? NSArray{
-                        if jsonArray.count > 0{
-                            if let jsonDict = jsonArray[0] as? [String:Any]{
-                                userPageVC.json = jsonDict
-                                self.NoResultsLabel.isHidden = true
-                                self.present(userPageVC, animated: true, completion: nil)
+        if self.selected == "User"{
+            if let query = searchBar.text{
+                Alamofire.request(self.API_URL + "get_user?" + "&k=374c71b25b90368c6a0f3401983325ff98443313&event_days=31&u="+query).responseJSON { response in
+                    if let json = response.result.value {
+                        //print("JSON: \(json)") // serialized json response
+                        let userPageVC = self.storyboard?.instantiateViewController(withIdentifier: "UserPageControl") as! UserPageVC
+                        if let jsonArray = json as? NSArray{
+                            if jsonArray.count > 0{
+                                if let jsonDict = jsonArray[0] as? [String:Any]{
+                                    userPageVC.json = jsonDict
+                                    self.NoResultsLabel.isHidden = true
+                                    self.present(userPageVC, animated: true, completion: nil)
+                                }else{
+                                    self.NoResultsLabel.isHidden = false
+                                }
                             }else{
                                 self.NoResultsLabel.isHidden = false
                             }
                         }else{
                             self.NoResultsLabel.isHidden = false
                         }
+                        
+                        
+                        
                     }else{
                         self.NoResultsLabel.isHidden = false
                     }
                     
-
-                    
-                }else{
-                    self.NoResultsLabel.isHidden = false
                 }
-                
             }
         }
-        
+        else if self.selected == "Beatmap"{
+            print("ipmlement")
+        }
     }
     
 
