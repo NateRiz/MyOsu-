@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double PagingMenuControllerVersionNumber;
-FOUNDATION_EXPORT const unsigned char PagingMenuControllerVersionString[];
+FOUNDATION_EXPORT double FrostedSidebarVersionNumber;
+FOUNDATION_EXPORT const unsigned char FrostedSidebarVersionString[];
 

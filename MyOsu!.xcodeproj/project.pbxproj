@@ -21,6 +21,7 @@
 		E120EA111FA283FD0083DAD2 /* SearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120EA101FA283FD0083DAD2 /* SearchResultVC.swift */; };
 		E120EA131FA2DCC20083DAD2 /* UserPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120EA121FA2DCC10083DAD2 /* UserPageVC.swift */; };
 		E120EA151FA2E96C0083DAD2 /* UserDetailedStatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E120EA141FA2E96C0083DAD2 /* UserDetailedStatsVC.swift */; };
+		E1CD9D171FA6878B004A7E79 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CD9D161FA6878B004A7E79 /* MainVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		E120EA101FA283FD0083DAD2 /* SearchResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVC.swift; sourceTree = "<group>"; };
 		E120EA121FA2DCC10083DAD2 /* UserPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageVC.swift; sourceTree = "<group>"; };
 		E120EA141FA2E96C0083DAD2 /* UserDetailedStatsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailedStatsVC.swift; sourceTree = "<group>"; };
+		E1CD9D161FA6878B004A7E79 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		E2EE2DE92D78BC7587944F7B /* Pods-MyOsu!UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOsu!UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyOsu!UITests/Pods-MyOsu!UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E890117BBE519280609F3554 /* Pods-MyOsu!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOsu!.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyOsu!/Pods-MyOsu!.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +157,7 @@
 				E120EA101FA283FD0083DAD2 /* SearchResultVC.swift */,
 				E120EA121FA2DCC10083DAD2 /* UserPageVC.swift */,
 				E120EA141FA2E96C0083DAD2 /* UserDetailedStatsVC.swift */,
+				E1CD9D161FA6878B004A7E79 /* MainVC.swift */,
 			);
 			path = "MyOsu!";
 			sourceTree = "<group>";
@@ -423,10 +426,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyOsu!/Pods-MyOsu!-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FrostedSidebar/FrostedSidebar.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FrostedSidebar.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -479,6 +484,7 @@
 				E120EA151FA2E96C0083DAD2 /* UserDetailedStatsVC.swift in Sources */,
 				E120E9DF1FA2495A0083DAD2 /* ViewController.swift in Sources */,
 				E120E9DD1FA2495A0083DAD2 /* AppDelegate.swift in Sources */,
+				E1CD9D171FA6878B004A7E79 /* MainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
