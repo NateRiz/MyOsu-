@@ -63,7 +63,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="newsCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" textLabel="7a3-ww-nRu" detailTextLabel="C5e-83-CsJ" style="IBUITableViewCellStyleSubtitle" id="Ujh-Qg-TB1" customClass="NewsCell" customModule="MyOsu_" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="newsCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="newsCell" textLabel="7a3-ww-nRu" detailTextLabel="C5e-83-CsJ" style="IBUITableViewCellStyleSubtitle" id="Ujh-Qg-TB1" customClass="NewsCell" customModule="MyOsu_" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ujh-Qg-TB1" id="ryH-BX-ufV">
@@ -120,7 +120,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.69007570200000001" blue="0.91482492630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93225298050000005" green="1" blue="0.96165822180000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XbP-Tu-ugd" firstAttribute="bottom" secondItem="XCQ-ez-WJB" secondAttribute="bottom" constant="1" id="5Nl-jJ-uM7"/>
                             <constraint firstItem="xlv-C1-7VQ" firstAttribute="top" secondItem="XCQ-ez-WJB" secondAttribute="top" id="EeV-If-wfD"/>
@@ -380,26 +380,35 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="35" id="fHT-CD-LKH" customClass="SongCell" customModule="MyOsu_" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="35" id="fHT-CD-LKH" customClass="SongCell" customModule="MyOsu_" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="35"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fHT-CD-LKH" id="zJP-J4-gIe">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="34.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IuG-zd-Tdg">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IuG-zd-Tdg">
                                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SongName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-wF-JYo">
-                                                                    <rect key="frame" x="88" y="0.0" width="287" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SongName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-wF-JYo">
+                                                                    <rect key="frame" x="88" y="0.0" width="287" height="35"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="IuG-zd-Tdg" secondAttribute="trailing" constant="295" id="3nm-6l-dU2"/>
+                                                                <constraint firstItem="hhF-wF-JYo" firstAttribute="leading" secondItem="IuG-zd-Tdg" secondAttribute="trailing" constant="8" id="7MA-Y3-4Nz"/>
+                                                                <constraint firstAttribute="trailing" secondItem="hhF-wF-JYo" secondAttribute="trailing" id="9Nk-mR-Baz"/>
+                                                                <constraint firstItem="hhF-wF-JYo" firstAttribute="height" secondItem="zJP-J4-gIe" secondAttribute="height" id="QWZ-mH-8sx"/>
+                                                                <constraint firstItem="IuG-zd-Tdg" firstAttribute="leading" secondItem="zJP-J4-gIe" secondAttribute="leading" id="Vg7-ws-LLS"/>
+                                                                <constraint firstItem="hhF-wF-JYo" firstAttribute="top" secondItem="zJP-J4-gIe" secondAttribute="top" id="h7K-OU-7yh"/>
+                                                                <constraint firstItem="IuG-zd-Tdg" firstAttribute="top" secondItem="zJP-J4-gIe" secondAttribute="top" id="ksR-WS-OTx"/>
+                                                                <constraint firstAttribute="bottom" secondItem="IuG-zd-Tdg" secondAttribute="bottom" constant="-45.5" id="lmh-9h-uie"/>
+                                                                <constraint firstAttribute="bottom" secondItem="hhF-wF-JYo" secondAttribute="bottom" id="o2N-Rt-83X"/>
+                                                            </constraints>
                                                         </tableViewCellContentView>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <connections>

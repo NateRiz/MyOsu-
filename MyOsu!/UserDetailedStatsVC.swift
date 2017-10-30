@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+import SwiftSoup
 
 class SongCell : UITableViewCell{
     
@@ -31,6 +31,7 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.SongTable.delegate = self
         self.SongTable.dataSource = self
         self.SongTable.rowHeight = 80
@@ -38,6 +39,7 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
             self.NoHistoryLabel.isHidden = true
             self.SongTable.isHidden = false
             self.PopulateSongNames()
+            
             
         }else{
             self.NoHistoryLabel.isHidden = false
@@ -72,23 +74,30 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
+    func ParseUserHistory(h:[String:Any]){
+        do{
+            if let html = h["display_html"] as? String{
+                let doc: Document = try SwiftSoup.parse(html)
+                self.songNames.append(try doc.text())
+            }
+        }catch let error {
+            print("Could not fetch user history html:")
+            print(error)
+        }
+    }
+    
     func PopulateSongNames() {
         let group = DispatchGroup()
-        for i in 0..<10{
+        for i in 0 ..< self.history.count{
             group.enter()
+            self.ParseUserHistory(h:(self.history[i] as! [String:Any]))
             self.songImages.append(UIImage())
             if let event = self.history[i] as? [String:Any]{
-                if let id = event["beatmap_id"] as? String{
-                    self.searchBarSearchButtonClicked(beatmap: id, completion: {
-                        
-                        self.getAvatar(index: i, id:(event["beatmapset_id"] as! String))
-                        self.SongTable.beginUpdates()
-                        self.SongTable.insertRows(at: [IndexPath(row: self.songNames.count-1, section: 0)], with: .automatic)
-                        self.SongTable.endUpdates()
-                        group.leave()
-                    }
-                    )
-                }
+                self.getAvatar(index: i, id:(event["beatmapset_id"] as! String))
+                self.SongTable.beginUpdates()
+                self.SongTable.insertRows(at: [IndexPath(row: self.songNames.count-1, section: 0)], with: .automatic)
+                self.SongTable.endUpdates()
+                group.leave()
             }
         }
         group.notify(queue: DispatchQueue.main, work: DispatchWorkItem(block: {
@@ -100,34 +109,9 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    func searchBarSearchButtonClicked(beatmap: String, completion: @escaping ()->()) {
-        var songName = ""
-        Alamofire.request(self.API_URL + "get_beatmaps?" + "&k=374c71b25b90368c6a0f3401983325ff98443313&b="+beatmap).responseJSON { response in
-            if let json = response.result.value {
-                print("JSON: \(json)") // serialized json response
-                let parsed = (json as! [Any])[0] as! [String:Any]
-                if let artist = parsed["artist"] as? String{
-                    songName += (artist + " - ")
-                }
-                if let title = parsed["title"] as? String{
-                    songName += (title + " ")
-                }
-                if let difficult = parsed["version"] as? String{
-                    songName += ("[" + difficult + "]")
-                }
-                
-            }
-            print(songName)
-            self.songNames.append(songName)
-            completion()
-        }
-        
-
-    }
-    
     func getAvatar(index: Int, id: String)
     {
-        print(index,"song images now has",self.songImages.count)
+        //print(index,"song images now has",self.songImages.count)
         let url = URL(string: "https://b.ppy.sh/thumb/\(id).jpg")!
         let session = URLSession(configuration: .default)
         
@@ -142,7 +126,7 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
                     if let imageData = data {
                         // Finally convert that Data into an image and do what you wish with it.
                         if let image = UIImage(data: imageData){
-                            print("accessing index",index)
+                            //print("accessing index",index)
                             self.songImages[index] = image
                             if index % 5 == 0{
                                 DispatchQueue.main.async {
