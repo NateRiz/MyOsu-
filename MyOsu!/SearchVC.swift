@@ -28,6 +28,9 @@ class SearchVC: UIViewController, UISearchBarDelegate{
         OsuSearchBar.delegate = self
         self.UserButton.tintColor = UIColor.yellow
         self.selected="User"
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
         
 
 
@@ -84,6 +87,14 @@ class SearchVC: UIViewController, UISearchBarDelegate{
         }
         else if self.selected == "Beatmap"{
             print("ipmlement")
+        }
+    }
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            if swipeGesture.direction == UISwipeGestureRecognizerDirection.down{
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
     

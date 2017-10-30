@@ -69,7 +69,6 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
         cell.SongName.text = self.songNames[indexPath.row]
         cell.SongImage.image = self.songImages[indexPath.row]
         
-        
         return cell
     }
     

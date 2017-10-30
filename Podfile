@@ -8,6 +8,7 @@ target 'MyOsu!' do
   # Pods for MyOsu!
   pod 'Alamofire', '~> 4.5'
   pod 'FrostedSidebar'
+  pod 'SwiftSoup'
   
   target 'MyOsu!Tests' do
     inherit! :search_paths

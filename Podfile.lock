@@ -1,15 +1,18 @@
 PODS:
   - Alamofire (4.5.1)
   - FrostedSidebar (1.0.0)
+  - SwiftSoup (1.5.5)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
   - FrostedSidebar
+  - SwiftSoup
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   FrostedSidebar: f86c6843cabd5d456f9234afb6eea22a7512532f
+  SwiftSoup: 6a31eb02551c9c523eea14aef9d9e70f1466ff99
 
-PODFILE CHECKSUM: 3562852e248081bb6c7d688413d606626e741a3a
+PODFILE CHECKSUM: 97dfe04e9c83e4989f494e499192cf0a0550ef87
 
 COCOAPODS: 1.3.1
