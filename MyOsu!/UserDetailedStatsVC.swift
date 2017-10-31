@@ -115,7 +115,6 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
         //print(index,"song images now has",self.songImages.count)
         let url = URL(string: "https://b.ppy.sh/thumb/\(id).jpg")!
         let session = URLSession(configuration: .default)
-        
         session.dataTask(with: url) { (data, response, error) in
             // The download has finished.
             if let e = error {

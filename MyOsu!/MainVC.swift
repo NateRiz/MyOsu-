@@ -9,8 +9,15 @@
 import UIKit
 import FrostedSidebar
 import SwiftSoup
+import Alamofire
 
 class NewsCell : UITableViewCell{
+    
+    @IBOutlet weak var newsView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var newsLabel: UILabel!
+}
+class RedditCell : UITableViewCell{
     
     @IBOutlet weak var newsView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,20 +34,30 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
     var TitleLabels = [String]()
     var NewsLabels = [String]()
     var NewsLinks = [String]()
-    var cellReuseIdentifier = "newsCell"
+    let cellReuseIdentifier = "newsCell"
+    var RedditTitles = [String]()
+    var RedditNews = [String]()
+    var RedditLinks = [String]()
+    let redditCellIdentifier = "redditCell"
     
     
     @IBOutlet weak var NewsTable: UITableView!
+    @IBOutlet weak var RedditTable: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.GetOsuNews()
+        self.GetRedditNews()
         self.frostedSidebar = FrostedSidebar(itemImages: self.imageArray, colors: self.colorArray, selectionStyle: .all)
         self.frostedSidebar.delegate = self
         self.NewsTable.delegate = self
         self.NewsTable.dataSource = self
         self.NewsTable.rowHeight = 100
+        self.RedditTable.delegate = self
+        self.RedditTable.dataSource = self
+        self.RedditTable.rowHeight = 100
+        
         
         
         
@@ -86,44 +103,89 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
         
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.NewsLabels.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: NewsCell = self.NewsTable.dequeueReusableCell(withIdentifier: self.cellReuseIdentifier) as! NewsCell
-        cell.titleLabel.text = self.TitleLabels[indexPath.row]
-        cell.newsLabel.text = self.NewsLabels[indexPath.row]
-        cell.alpha = 0
-        
-        cell.newsView.layer.masksToBounds = false
-        cell.newsView.layer.shadowColor = UIColor.black.cgColor
-        cell.newsView.layer.shadowOpacity = 0.5
-        cell.newsView.layer.shadowOffset = CGSize(width: -1, height: 1)
-        cell.newsView.layer.shadowRadius = 1
-        cell.newsView.layer.shouldRasterize = true
-
-        
-        return cell
-    }
-
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        print(self.NewsLinks[indexPath.row])
-        let url = URL(string: self.NewsLinks[indexPath.row])!
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
-        }
-    }
-    
     func sidebar(_ sidebar: FrostedSidebar, didEnable itemEnabled: Bool, itemAtIndex index: Int) {
         
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == self.NewsTable
+        {
+            return self.NewsLabels.count
+        }
+        else if tableView == self.RedditTable
+        {
+            return self.RedditTitles.count
+        }
+        return 0
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = UITableViewCell()
+        
+        if tableView == self.NewsTable
+        {
+            let cell: NewsCell = self.NewsTable.dequeueReusableCell(withIdentifier: self.cellReuseIdentifier) as! NewsCell
+            cell.titleLabel.text = self.TitleLabels[indexPath.row]
+            cell.newsLabel.text = self.NewsLabels[indexPath.row]
+            cell.alpha = 0
+            
+            cell.newsView.layer.masksToBounds = false
+            cell.newsView.layer.shadowColor = UIColor.black.cgColor
+            cell.newsView.layer.shadowOpacity = 0.5
+            cell.newsView.layer.shadowOffset = CGSize(width: -1, height: 1)
+            cell.newsView.layer.shadowRadius = 1
+            cell.newsView.layer.shouldRasterize = true
+            return cell
+            
+        }
+        else if tableView == self.RedditTable
+        {
+            let cell: RedditCell = self.RedditTable.dequeueReusableCell(withIdentifier: self.redditCellIdentifier) as! RedditCell
+            cell.titleLabel.text = self.RedditTitles[indexPath.row]
+            //cell.newsLabel.text = self.RedditNews[indexPath.row]
+            cell.alpha = 0
+            
+            cell.newsView.layer.masksToBounds = false
+            cell.newsView.layer.shadowColor = UIColor.black.cgColor
+            cell.newsView.layer.shadowOpacity = 0.5
+            cell.newsView.layer.shadowOffset = CGSize(width: -1, height: 1)
+            cell.newsView.layer.shadowRadius = 1
+            cell.newsView.layer.shouldRasterize = true
+            return cell
+            
+        }
+        print("Error: returning empty cell")
+        return cell
+
+        
+        
+    }
+
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+        if tableView == self.NewsTable
+        {
+            let url = URL(string: self.NewsLinks[indexPath.row])!
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+        else if tableView == self.RedditTable
+        {
+            let url = URL(string: self.RedditLinks[indexPath.row])!
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
+
     
     
     func GetOsuNews(){
@@ -153,6 +215,44 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
         }
     }
     
+    
+    func GetRedditNews()
+    {
+        
+        let url = URL(string: "https://www.reddit.com/r/osugame/.json")!
+        Alamofire.request(url).responseJSON { response in
+        if let json = response.result.value {
+            //print("JSON: \(json)") // serialized json response
+            if let jsonArray = json as? [String:Any]{
+                if let data = jsonArray["data"] as? [String:Any]{
+                    if let children = data["children"] as? NSArray{
+                        DispatchQueue.main.async {
+                            self.RedditTable.beginUpdates()
+                            for i in 0 ..< children.count{
+                                if let child = children[i] as? [String:Any]{
+                                    if let childData = child["data"] as? [String:Any]{
+                                        if let title = childData["title"] as? String{
+                                                self.RedditTitles.append(title)
+                                                self.RedditTable.insertRows(at: [IndexPath(row: self.RedditTitles.count-1, section: 0)], with: .automatic)
+                                            }
+                                        
+                                        
+                                        }
+                                    }
+                                
+                                }
+                            self.RedditTable.endUpdates()
+                            
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
+        }
+        
+    }
     
     
     
