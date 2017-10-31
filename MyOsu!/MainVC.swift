@@ -27,13 +27,15 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
     
     
     
-    let imageArray = [UIImage(named:"search.png")!]
-    let colorArray = [UIColor.white]
+    let imageArray = [UIImage(named:"search.png")!, UIImage(named:"share.png")!]
+    let colorArray = [UIColor.white,UIColor.red]
     var frostedSidebar: FrostedSidebar!
+    
     var TitleLabels = [String]()
     var NewsLabels = [String]()
     var NewsLinks = [String]()
     let cellReuseIdentifier = "newsCell"
+    
     var RedditTitles = [String]()
     var RedditNews = [String]()
     var RedditLinks = [String]()
@@ -97,8 +99,9 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
         if index == 0{
             let searchView = self.storyboard!.instantiateViewController(withIdentifier: "searchView") as! SearchVC
             self.present(searchView, animated:true, completion:nil)
-            
-        
+        }
+        if index == 1{
+            print("clicked")
         }
         
     }
