@@ -12,6 +12,7 @@ import SwiftSoup
 
 class NewsCell : UITableViewCell{
     
+    @IBOutlet weak var newsView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var newsLabel: UILabel!
 }
@@ -40,6 +41,8 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
         self.NewsTable.delegate = self
         self.NewsTable.dataSource = self
         self.NewsTable.rowHeight = 100
+        
+        
         
         
         
@@ -92,8 +95,18 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
         cell.titleLabel.text = self.TitleLabels[indexPath.row]
         cell.newsLabel.text = self.NewsLabels[indexPath.row]
         cell.alpha = 0
+        
+        cell.newsView.layer.masksToBounds = false
+        cell.newsView.layer.shadowColor = UIColor.black.cgColor
+        cell.newsView.layer.shadowOpacity = 0.5
+        cell.newsView.layer.shadowOffset = CGSize(width: -1, height: 1)
+        cell.newsView.layer.shadowRadius = 1
+        cell.newsView.layer.shouldRasterize = true
+
+        
         return cell
     }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         print(self.NewsLinks[indexPath.row])

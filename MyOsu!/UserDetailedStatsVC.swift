@@ -31,7 +31,7 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(self.history)
         self.SongTable.delegate = self
         self.SongTable.dataSource = self
         self.SongTable.rowHeight = 80
@@ -79,6 +79,7 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
             if let html = h["display_html"] as? String{
                 let doc: Document = try SwiftSoup.parse(html)
                 self.songNames.append(try doc.text())
+                
             }
         }catch let error {
             print("Could not fetch user history html:")
