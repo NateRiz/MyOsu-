@@ -38,6 +38,7 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
     var RedditTitles = [String]()
     var RedditNews = [String]()
     var RedditLinks = [String]()
+    var RedditColors = [UIColor]()
     let redditCellIdentifier = "redditCell"
     
     
@@ -128,7 +129,6 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
             let cell: NewsCell = self.NewsTable.dequeueReusableCell(withIdentifier: self.cellReuseIdentifier) as! NewsCell
             cell.titleLabel.text = self.TitleLabels[indexPath.row]
             cell.newsLabel.text = self.NewsLabels[indexPath.row]
-            cell.alpha = 0
             
             cell.newsView.layer.masksToBounds = false
             cell.newsView.layer.shadowColor = UIColor.black.cgColor
@@ -144,8 +144,8 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
             let cell: RedditCell = self.RedditTable.dequeueReusableCell(withIdentifier: self.redditCellIdentifier) as! RedditCell
             cell.titleLabel.text = self.RedditTitles[indexPath.row]
             //cell.newsLabel.text = self.RedditNews[indexPath.row]
-            cell.alpha = 0
             
+            cell.newsView.backgroundColor = self.RedditColors[indexPath.row]
             cell.newsView.layer.masksToBounds = false
             cell.newsView.layer.shadowColor = UIColor.black.cgColor
             cell.newsView.layer.shadowOpacity = 0.5
@@ -226,6 +226,7 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
             if let jsonArray = json as? [String:Any]{
                 if let data = jsonArray["data"] as? [String:Any]{
                     if let children = data["children"] as? NSArray{
+                        
                         DispatchQueue.main.async {
                             self.RedditTable.beginUpdates()
                             for i in 0 ..< children.count{
@@ -233,10 +234,19 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
                                     if let childData = child["data"] as? [String:Any]{
                                         if let title = childData["title"] as? String{
                                                 self.RedditTitles.append(title)
-                                                self.RedditTable.insertRows(at: [IndexPath(row: self.RedditTitles.count-1, section: 0)], with: .automatic)
+                                                self.RedditColors.append(UIColor.white)
+                                            
                                             }
+                                        if let stickied = childData["stickied"] as? Bool{
+                                            if stickied{
+                                                self.RedditColors[(self.RedditColors.count - 1)] = UIColor(displayP3Red: 226/255, green: 247/255, blue: 227/255, alpha: 1.0)
+                                            }
+                                        }
+                                        if let url = childData["url"] as? String{
+                                            self.RedditLinks.append(url)
+                                        }
                                         
-                                        
+                                         self.RedditTable.insertRows(at: [IndexPath(row: self.RedditTitles.count-1, section: 0)], with: .automatic)
                                         }
                                     }
                                 
@@ -244,6 +254,8 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
                             self.RedditTable.endUpdates()
                             
                         }
+                        
+                        
                     }
                     
                 }
