@@ -21,7 +21,6 @@ class RedditCell : UITableViewCell{
     
     @IBOutlet weak var newsView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var newsLabel: UILabel!
 }
 
 class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UITableViewDataSource{
@@ -143,7 +142,6 @@ class MainVC: UIViewController , FrostedSidebarDelegate, UITableViewDelegate, UI
         {
             let cell: RedditCell = self.RedditTable.dequeueReusableCell(withIdentifier: self.redditCellIdentifier) as! RedditCell
             cell.titleLabel.text = self.RedditTitles[indexPath.row]
-            //cell.newsLabel.text = self.RedditNews[indexPath.row]
             
             cell.newsView.backgroundColor = self.RedditColors[indexPath.row]
             cell.newsView.layer.masksToBounds = false
