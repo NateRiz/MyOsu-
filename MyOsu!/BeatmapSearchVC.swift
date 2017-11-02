@@ -12,6 +12,7 @@ import SwiftSoup
 class BeatmapSearchVC: UIViewController {
     
     var query = String()
+    var statuses = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +29,10 @@ class BeatmapSearchVC: UIViewController {
     func scrapeSearch()
     {
         self.query = "The quick brown fox"
+        self.statuses = ["1","2","4"]
+        let statusQuery = self.statuses.joined(separator:",")
         self.query = self.query.replacingOccurrences(of: " ", with: "+")
-        let url = "http://bloodcat.com/osu/?q=" + self.query
+        let url = "http://bloodcat.com/osu/?q=" + self.query + "&c=b&s="+statusQuery + "&m="
         do {
             print(url)
             let html = try String(contentsOf:URL(string: url)!)
