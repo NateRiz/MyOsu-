@@ -11,13 +11,15 @@ import Alamofire
 
 class SearchVC: UIViewController, UISearchBarDelegate{
 
-    
-    
-    @IBAction func SelectRanked(_ sender: Any) {
-    }
+    let SongTypes = [UIButton()]
     
     
     
+    @IBOutlet weak var RankedButton: CustomButton!
+    @IBOutlet weak var QualifiedButton: CustomButton!
+    @IBOutlet weak var ApprovedButton: CustomButton!
+    @IBOutlet weak var UnrankedButton: CustomButton!
+    @IBOutlet weak var LovedButton: CustomButton!
     
 
     @IBOutlet weak var BeatmapButton: UIButton!
@@ -37,8 +39,6 @@ class SearchVC: UIViewController, UISearchBarDelegate{
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
-        
-
 
         // Do any additional setup after loading the view.
     }

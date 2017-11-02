@@ -9,13 +9,31 @@
 import UIKit
 
 class CustomButton: UIButton {
+    
+    var select = false
+    var SelectionColor = [(UIColor.white).cgColor]
 
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.borderWidth = 2
-        self.layer.borderColor  = UIColor(displayP3Red: 101/255, green: 255/255, blue: 250/255, alpha: 1).cgColor
+        self.layer.borderColor  = self.SelectionColor[0]
+        self.MakeBorderColor()
         self.layer.cornerRadius = 12
+        self.addTarget(self, action: #selector(self.OnPress), for: .touchUpInside)
         
+    }
+    
+    @objc func OnPress()
+    {
+        self.select = !self.select
+        self.layer.borderColor = self.SelectionColor[self.select==true ? 1 : 0]
+    }
+    
+    func MakeBorderColor()
+    {
+        var rgb : [Float] = [Float(arc4random_uniform(176)+80)/255, Float(arc4random_uniform(176)+80)/255, 255/255]
+        rgb.shuffle()
+        self.SelectionColor.append(UIColor(displayP3Red: CGFloat(rgb[0]), green: CGFloat(rgb[1]), blue: CGFloat(rgb[2]), alpha: 1).cgColor)
     }
     
 

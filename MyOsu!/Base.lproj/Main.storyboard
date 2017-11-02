@@ -301,7 +301,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results were found." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtL-ps-Ugd">
                                         <rect key="frame" x="0.0" y="0.0" width="196" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.81024848090277779" green="1" blue="0.65931532118055558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -326,9 +326,6 @@
                                                 <state key="normal" title="Ranked">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="SelectRanked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0sk-gV-jGD"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtH-G9-mRT" customClass="CustomButton" customModule="MyOsu_" customModuleProvider="target">
                                                 <rect key="frame" x="133" y="0.0" width="109" height="39"/>
@@ -392,9 +389,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="ApprovedButton" destination="MbI-Ba-jhw" id="Mns-Yc-FLl"/>
                         <outlet property="BeatmapButton" destination="x03-1K-zcJ" id="rtp-rx-UKv"/>
+                        <outlet property="LovedButton" destination="3j0-bm-UzF" id="Eag-uH-Ewo"/>
                         <outlet property="NoResultsLabel" destination="Xax-GO-8Cg" id="213-Q7-i4j"/>
                         <outlet property="OsuSearchBar" destination="tuf-7j-f3r" id="fYU-ah-tgQ"/>
+                        <outlet property="QualifiedButton" destination="dtH-G9-mRT" id="rEm-Rg-q0A"/>
+                        <outlet property="RankedButton" destination="CuE-Wy-4KF" id="d68-xE-yg4"/>
+                        <outlet property="UnrankedButton" destination="evz-U7-Nea" id="GG8-zz-B48"/>
                         <outlet property="UserButton" destination="ZUT-x9-ZCC" id="AmD-iV-2x7"/>
                     </connections>
                 </viewController>
