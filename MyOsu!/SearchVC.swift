@@ -13,6 +13,12 @@ class SearchVC: UIViewController, UISearchBarDelegate{
 
     
     
+    @IBAction func SelectRanked(_ sender: Any) {
+    }
+    
+    
+    
+    
 
     @IBOutlet weak var BeatmapButton: UIButton!
     @IBOutlet weak var UserButton: UIButton!

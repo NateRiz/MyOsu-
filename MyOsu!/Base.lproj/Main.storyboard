@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IId-nE-RhM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -308,26 +308,86 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="rtL-ps-Ugd" firstAttribute="top" secondItem="Xax-GO-8Cg" secondAttribute="top" id="L3Q-Ct-0e0"/>
-                                    <constraint firstItem="rtL-ps-Ugd" firstAttribute="width" secondItem="Xax-GO-8Cg" secondAttribute="width" id="PbG-ha-C70"/>
-                                    <constraint firstItem="rtL-ps-Ugd" firstAttribute="height" secondItem="Xax-GO-8Cg" secondAttribute="height" id="a09-a6-xig"/>
                                     <constraint firstAttribute="trailing" secondItem="rtL-ps-Ugd" secondAttribute="trailing" id="haC-qa-Zdo"/>
                                     <constraint firstItem="rtL-ps-Ugd" firstAttribute="leading" secondItem="Xax-GO-8Cg" secondAttribute="leading" id="sto-mw-YHE"/>
                                     <constraint firstAttribute="bottom" secondItem="rtL-ps-Ugd" secondAttribute="bottom" id="x7J-tf-hYf"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="vKp-Gd-5ZR">
+                                <rect key="frame" x="0.0" y="146" width="375" height="94"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="560-my-7my">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuE-Wy-4KF" customClass="CustomButton" customModule="MyOsu_" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="0.0" width="109" height="39"/>
+                                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Ranked">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="SelectRanked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0sk-gV-jGD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtH-G9-mRT" customClass="CustomButton" customModule="MyOsu_" customModuleProvider="target">
+                                                <rect key="frame" x="133" y="0.0" width="109" height="39"/>
+                                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Qualified">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbI-Ba-jhw" customClass="CustomButton" customModule="MyOsu_" customModuleProvider="target">
+                                                <rect key="frame" x="250" y="0.0" width="109" height="39"/>
+                                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Approved">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="16" bottom="0.0" right="16"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="qEK-UH-qPn">
+                                        <rect key="frame" x="0.0" y="55" width="375" height="39"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evz-U7-Nea" customClass="CustomButton" customModule="MyOsu_" customModuleProvider="target">
+                                                <rect key="frame" x="32" y="0.0" width="123.5" height="39"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Unranked">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3j0-bm-UzF" customClass="CustomButton" customModule="MyOsu_" customModuleProvider="target">
+                                                <rect key="frame" x="187.5" y="0.0" width="123.5" height="39"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Loved">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="32" bottom="0.0" right="64"/>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.69007570199770607" blue="0.91482492627958401" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="vKp-Gd-5ZR" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="3VY-qA-jmr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vKp-Gd-5ZR" secondAttribute="trailing" id="CFH-2U-v54"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xax-GO-8Cg" secondAttribute="trailing" constant="95" id="IGd-4g-Wqi"/>
+                            <constraint firstItem="vKp-Gd-5ZR" firstAttribute="top" secondItem="tuf-7j-f3r" secondAttribute="bottom" constant="34" id="PBP-6K-qbe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tuf-7j-f3r" secondAttribute="trailing" id="U0u-vV-caA"/>
                             <constraint firstItem="tuf-7j-f3r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aR1-xj-5sJ"/>
+                            <constraint firstItem="vKp-Gd-5ZR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fDv-6I-sBl"/>
                             <constraint firstItem="fIz-mS-vZj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lxi-rM-NN8"/>
                             <constraint firstItem="fIz-mS-vZj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="puu-zS-SA9"/>
                             <constraint firstItem="Xax-GO-8Cg" firstAttribute="top" secondItem="tuf-7j-f3r" secondAttribute="bottom" constant="180" id="sUB-TI-OYR"/>
                             <constraint firstItem="fIz-mS-vZj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="t8W-tv-C6Z"/>
+                            <constraint firstItem="tuf-7j-f3r" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="u5R-od-r9s"/>
                             <constraint firstItem="Xax-GO-8Cg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="84" id="xpB-me-r9L"/>
-                            <constraint firstItem="tuf-7j-f3r" firstAttribute="top" secondItem="fIz-mS-vZj" secondAttribute="bottom" id="zgc-R8-xT0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -341,6 +401,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--Beatmap SearchVC-->
+        <scene sceneID="Zgi-zQ-zyC">
+            <objects>
+                <viewController id="Pn0-bn-HnS" customClass="BeatmapSearchVC" customModule="MyOsu_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8id-F5-8gZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="h2V-0G-bvp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ABj-JM-PFQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="996" y="598"/>
         </scene>
         <!--Search ResultVC-->
         <scene sceneID="R3o-ny-lib">
@@ -470,7 +545,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OQx-8e-1DN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1896.8" y="-245.12743628185908"/>
+            <point key="canvasLocation" x="1897" y="-836"/>
         </scene>
         <!--User Detailed StatsVC-->
         <scene sceneID="vQh-XS-VPE">
@@ -618,7 +693,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4RS-bh-O1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1896.8" y="440.32983508245883"/>
+            <point key="canvasLocation" x="1897" y="-176"/>
         </scene>
         <!--User PageVC-->
         <scene sceneID="VsN-bJ-SxR">
@@ -626,7 +701,7 @@
                 <pageViewController storyboardIdentifier="UserPageControl" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="arR-8e-jD5" customClass="UserPageVC" customModule="MyOsu_" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ljJ-E1-zn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="881" y="134"/>
+            <point key="canvasLocation" x="996" y="-497"/>
         </scene>
     </scenes>
     <resources>
