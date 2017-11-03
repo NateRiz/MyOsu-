@@ -97,9 +97,26 @@ class SearchVC: UIViewController, UISearchBarDelegate{
             }
         }
         else if self.selected == "Beatmap"{
+            var SelectedButtons = [String]()
             let beatmapSearchVC = self.storyboard?.instantiateViewController(withIdentifier: "beatmapSearch") as! BeatmapSearchVC
             if let query = searchBar.text{
+                if self.RankedButton.select == true{
+                    SelectedButtons.append("1")
+                }
+                if self.ApprovedButton.select == true{
+                    SelectedButtons.append("2")
+                }
+                if self.QualifiedButton.select == true{
+                    SelectedButtons.append("3")
+                }
+                if self.LovedButton.select == true{
+                    SelectedButtons.append("4")
+                }
+                if self.UnrankedButton.select == true{
+                    SelectedButtons.append("5")
+                }
                 beatmapSearchVC.query = query
+                beatmapSearchVC.statuses = SelectedButtons
                 self.present(beatmapSearchVC, animated: true, completion: nil)
             }
         }

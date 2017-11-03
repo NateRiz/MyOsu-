@@ -422,7 +422,7 @@
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MPa-je-59G">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="611"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.65490196079999996" green="0.66274509800000003" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="sectionIndexBackgroundColor" red="0.65490196079999996" green="0.66274509800000003" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="songSearchCell" id="1u2-2x-QdO" customClass="SongSearchCell" customModule="MyOsu_" customModuleProvider="target">
@@ -528,7 +528,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.69007570200000001" blue="0.91482492630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.42352941179999998" green="0.4549019608" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="c2K-LC-LnG" firstAttribute="leading" secondItem="yxu-gI-yCG" secondAttribute="leading" id="3Tm-bz-AsG"/>
                                     <constraint firstAttribute="trailing" secondItem="c2K-LC-LnG" secondAttribute="trailing" id="EXm-YU-ggU"/>
@@ -554,6 +554,7 @@
                         <viewLayoutGuide key="safeArea" id="h2V-0G-bvp"/>
                     </view>
                     <connections>
+                        <outlet property="SongSearchbar" destination="c2K-LC-LnG" id="aO1-OM-FOV"/>
                         <outlet property="SongTable" destination="MPa-je-59G" id="DoE-Vp-3Ru"/>
                     </connections>
                 </viewController>

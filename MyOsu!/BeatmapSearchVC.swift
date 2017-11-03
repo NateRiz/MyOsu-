@@ -33,7 +33,7 @@ struct Song{
     }
 }
 
-class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
 
     
     
@@ -41,13 +41,15 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var statuses = [String]()
     var SearchResults = [Song]()
     @IBOutlet weak var SongTable: UITableView!
-
+    @IBOutlet weak var SongSearchbar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.scrapeSearch()
         SongTable.delegate = self
         SongTable.dataSource = self
         SongTable.rowHeight = 100
+        SongSearchbar.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,7 +71,7 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }else{
             self.GetSongImage(id:SearchResults[indexPath.row].id, indexPath:indexPath)
         }
-        
+        cell.SongView.layer.cornerRadius = 4
         cell.SongView.layer.masksToBounds = false
         cell.SongView.layer.shadowColor = UIColor.black.cgColor
         cell.SongView.layer.shadowOpacity = 0.5
@@ -87,7 +89,7 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.query = self.query.replacingOccurrences(of: " ", with: "+")
         let url = "http://bloodcat.com/osu/?q=" + self.query + "&c=b&s="+statusQuery + "&m="
         do {
-            print(url)
+            //print(url)
             let html = try String(contentsOf:URL(string: url)!)
             let doc: Document = try SwiftSoup.parse(html)
             
@@ -112,8 +114,10 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                     itr+=1
                 }
                 let duration = text[itr]
+                
                 self.SongTable.beginUpdates()
                 SearchResults.append(Song(name:name, artist:artist, duration:duration, id:id))
+                self.SongTable.insertRows(at: [IndexPath(row: self.SearchResults.count-1, section:0)], with: .automatic)
                 self.SongTable.endUpdates()
             }
         }
@@ -159,8 +163,29 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 }
             }
             }.resume()
-        
     }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let query = searchBar.text{
+            self.query = query
+            let group = DispatchGroup()
+            DispatchQueue.main.async{
+                group.enter()
+                print("enter")
+                self.SearchResults.removeAll()
+                self.SongTable.reloadData()
+                print("leave")
+                group.leave()
+            }
+            
+            
+        group.notify(queue: DispatchQueue.main, work: DispatchWorkItem(block: {
+            print("starting scrape")
+            self.scrapeSearch()
+        }))
+            
+        }
+    }
+    
     
     
     
