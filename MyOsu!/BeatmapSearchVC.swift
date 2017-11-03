@@ -14,6 +14,7 @@ class SongSearchCell: UITableViewCell{
     @IBOutlet weak var SongName: UILabel!
     @IBOutlet weak var SongArtist: UILabel!
     @IBOutlet weak var SongDuration: UILabel!
+    @IBOutlet weak var SongView: UIView!
 }
 
 struct Song{
@@ -21,7 +22,7 @@ struct Song{
     var artist = ""
     var duration = ""
     var id = ""
-    var image = UIImage()
+    var image : UIImage?
     
     init(name:String = "", artist:String = "", duration:String = "", id:String = "")
     {
@@ -59,11 +60,22 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SongSearchCell = self.SongTable.dequeueReusableCell(withIdentifier: "songSearchCell") as! SongSearchCell
+    
         cell.SongName.text = SearchResults[indexPath.row].name
         cell.SongArtist.text = SearchResults[indexPath.row].artist
         cell.SongDuration.text = SearchResults[indexPath.row].duration
-        cell.SongImage.image = SearchResults[indexPath.row].image
+        if SearchResults[indexPath.row].image != nil{
+            cell.SongImage.image = SearchResults[indexPath.row].image!
+        }else{
+            self.GetSongImage(id:SearchResults[indexPath.row].id, indexPath:indexPath)
+        }
         
+        cell.SongView.layer.masksToBounds = false
+        cell.SongView.layer.shadowColor = UIColor.black.cgColor
+        cell.SongView.layer.shadowOpacity = 0.5
+        cell.SongView.layer.shadowOffset = CGSize(width: -1, height: 1)
+        cell.SongView.layer.shadowRadius = 1
+        cell.SongView.layer.shouldRasterize = true
         
         return cell
     }
@@ -71,8 +83,6 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func scrapeSearch()
     {
-        self.query = "The quick brown fox"
-        self.statuses = ["1","2","4"]
         let statusQuery = self.statuses.joined(separator:",")
         self.query = self.query.replacingOccurrences(of: " ", with: "+")
         let url = "http://bloodcat.com/osu/?q=" + self.query + "&c=b&s="+statusQuery + "&m="
@@ -111,6 +121,45 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             print("Could not fetch news:")
             print(error)
         }
+    }
+    
+    
+    func GetSongImage(id:String, indexPath:IndexPath)
+    {
+        //print(index,"song images now has",self.songImages.count)
+        let url = URL(string: "https://b.ppy.sh/thumb/\(id).jpg")!
+        let session = URLSession(configuration: .default)
+        session.dataTask(with: url) { (data, response, error) in
+            // The download has finished.
+            if let e = error {
+                print("Error downloading cat picture: \(e)")
+            } else {
+                // No errors found.
+                // It would be weird if we didn't have a response, so check for that too.
+                if let _ = response as? HTTPURLResponse {
+                    if let imageData = data {
+                        // Finally convert that Data into an image and do what you wish with it.
+                        if let image = UIImage(data: imageData){
+                            //print("accessing index",index)
+                            DispatchQueue.main.async {
+                                self.SearchResults[indexPath.row].image = image
+                                self.SongTable.reloadRows(at: [indexPath], with: .automatic)
+                            }
+                            
+                        }
+                        
+                        
+                    } else {
+                        print("Couldn't get image: Image is nil")
+                        
+                    }
+                } else {
+                    print("Couldn't get response code for some reason")
+                    
+                }
+            }
+            }.resume()
+        
     }
     
     

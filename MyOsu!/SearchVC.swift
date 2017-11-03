@@ -15,6 +15,7 @@ class SearchVC: UIViewController, UISearchBarDelegate{
     
     
     
+    @IBOutlet weak var ButtonStack: UIStackView!
     @IBOutlet weak var RankedButton: CustomButton!
     @IBOutlet weak var QualifiedButton: CustomButton!
     @IBOutlet weak var ApprovedButton: CustomButton!
@@ -36,9 +37,11 @@ class SearchVC: UIViewController, UISearchBarDelegate{
         OsuSearchBar.delegate = self
         self.UserButton.tintColor = UIColor.yellow
         self.selected="User"
+        self.ButtonStack.isHidden = true
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+        
 
         // Do any additional setup after loading the view.
     }
@@ -52,11 +55,13 @@ class SearchVC: UIViewController, UISearchBarDelegate{
         self.BeatmapButton.tintColor = UIColor.yellow
         self.UserButton.tintColor = UIColor.white
         self.selected = "Beatmap"
+        self.ButtonStack.isHidden = false
     }
     @IBAction func UserSearchButton(_ sender: Any) {
         self.UserButton.tintColor = UIColor.yellow
         self.BeatmapButton.tintColor = UIColor.white
         self.selected = "User"
+        self.ButtonStack.isHidden = true
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -92,7 +97,11 @@ class SearchVC: UIViewController, UISearchBarDelegate{
             }
         }
         else if self.selected == "Beatmap"{
-            print("ipmlement")
+            let beatmapSearchVC = self.storyboard?.instantiateViewController(withIdentifier: "beatmapSearch") as! BeatmapSearchVC
+            if let query = searchBar.text{
+                beatmapSearchVC.query = query
+                self.present(beatmapSearchVC, animated: true, completion: nil)
+            }
         }
     }
     
