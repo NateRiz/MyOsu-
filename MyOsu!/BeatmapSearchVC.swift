@@ -60,6 +60,18 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         return self.SearchResults.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        let beatmapInfo = self.storyboard!.instantiateViewController(withIdentifier: "beatmapInfo") as! BeatmapInfoVC
+        beatmapInfo.image = self.SearchResults[indexPath.row].image
+        beatmapInfo.name = self.SearchResults[indexPath.row].name
+        beatmapInfo.artist = self.SearchResults[indexPath.row].artist
+        beatmapInfo.duration = self.SearchResults[indexPath.row].duration
+        beatmapInfo.id = self.SearchResults[indexPath.row].id
+         
+ 
+        self.present(beatmapInfo, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SongSearchCell = self.SongTable.dequeueReusableCell(withIdentifier: "songSearchCell") as! SongSearchCell
     
