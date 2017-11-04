@@ -10,17 +10,43 @@ import UIKit
 import Alamofire
 
 class SongVC: UIViewController{
-    var label = -1
-    override func viewDidLoad(){
-        super.viewDidLoad()
-    }
-
+    var image: UIImage?
+    var name = ""
+    var artist = ""
+    var duration = ""
+    var id = ""
+    var pages = [Int]() // [self pg number, total page number]
+    
     override func loadView() {
         view = UIView()
+        print(self.pages)
+        let PageDots = UIPageControl(frame: CGRect(x:168, y:130, width:39, height:37))
+        //PageDots.updateCurrentPageDisplay()
+        PageDots.numberOfPages = self.pages[1]
+        PageDots.currentPage = self.pages[0]
+        PageDots.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(PageDots)
+        NSLayoutConstraint(item: PageDots, attribute: .centerX, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  PageDots, attribute: .top, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: .top, multiplier: 1, constant: 610).isActive = true
+        NSLayoutConstraint(item:  PageDots, attribute: .bottom, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        
+        
         view.backgroundColor = UIColor(displayP3Red: 108/255, green: 116/255, blue: 194/255, alpha: 1.0)
-        let label = UILabel(frame: CGRect(x:0, y:0, width:100, height:100))
-        label.text = String(self.label)
-        view.addSubview(label)
+        var SongImageView = UIImageView(frame: CGRect(x:123, y:0, width:128, height: 128))
+        SongImageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(SongImageView)
+        NSLayoutConstraint(item: SongImageView, attribute: .leading, relatedBy: .equal, toItem:view, attribute: .leading, multiplier: 1, constant: 123).isActive = true
+        NSLayoutConstraint(item: SongImageView, attribute: .trailing, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -124).isActive = true
+        NSLayoutConstraint(item: SongImageView, attribute: .top, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: .top, multiplier: 1, constant: 20).isActive = true
+        NSLayoutConstraint(item: SongImageView, attribute: .bottom, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -539).isActive = true
+        
+        if self.image != nil{
+            SongImageView.image = self.image!
+        }else{
+            print("image is nil :(")
+        }
+        
+        
     }
     
 }
@@ -79,10 +105,15 @@ class BeatmapInfoVC: UIPageViewController {
             if let json = response.result.value {
                 //print("JSON: \(json)") // serialized json response
                 if let JsonList = json as? [[String:Any]]{
-                    for i in 0...JsonList.count{
-                        let x = SongVC()
-                        x.label = i
-                        self.SongViews.append(x)
+                    for i in 0..<JsonList.count{
+                        let set = SongVC()
+                        set.name = self.name
+                        set.image = self.image
+                        set.artist = self.artist
+                        set.duration = self.duration
+                        set.id = self.id
+                        set.pages = [i,JsonList.count]
+                        self.SongViews.append(set)
                     }
                     if self.SongViews.count > 0{
                         self.CurrentPage = 0
