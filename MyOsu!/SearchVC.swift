@@ -69,6 +69,7 @@ class SearchVC: UIViewController, UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if self.selected == "User"{
             if let query = searchBar.text{
+                
                 Alamofire.request(self.API_URL + "get_user?" + "&k=374c71b25b90368c6a0f3401983325ff98443313&event_days=31&u="+query).responseJSON { response in
                     if let json = response.result.value {
                         //print("JSON: \(json)") // serialized json response

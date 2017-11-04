@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class BeatmapInfoVC: UIViewController {
     var name = String()
@@ -16,6 +17,7 @@ class BeatmapInfoVC: UIViewController {
     var image: UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.callAPI()
 
         // Do any additional setup after loading the view.
     }
@@ -25,6 +27,16 @@ class BeatmapInfoVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func callAPI(){
+        print(self.id)
+        Alamofire.request("https://osu.ppy.sh/api/get_beatmaps?&k=374c71b25b90368c6a0f3401983325ff98443313&s="+self.id).responseJSON { response in
+            if let json = response.result.value {
+                print("JSON: \(json)") // serialized json response
+                
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation
