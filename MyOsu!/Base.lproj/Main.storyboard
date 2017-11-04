@@ -41,8 +41,8 @@
                                                     <action selector="MenuButtonPress:" destination="IId-nE-RhM" eventType="touchUpInside" id="NVD-qK-WbH"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Osu!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1L-JW-AUT">
-                                                <rect key="frame" x="137" y="0.0" width="101" height="60"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyOsu!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1L-JW-AUT">
+                                                <rect key="frame" x="104" y="0.0" width="167.5" height="60"/>
                                                 <color key="tintColor" red="0.76280735399999999" green="0.82435755079999995" blue="0.80055958729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -521,20 +521,30 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <subviews>
                                     <searchBar opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="c2K-LC-LnG">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="56"/>
                                         <color key="backgroundColor" red="0.42352941179999998" green="0.4549019608" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="barTintColor" red="1" green="0.69007570200000001" blue="0.91482492630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3h6-yG-3dg">
+                                        <rect key="frame" x="345" y="0.0" width="30" height="56"/>
+                                        <color key="backgroundColor" red="1" green="0.69007570200000001" blue="0.91482492630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="X"/>
+                                        <connections>
+                                            <action selector="CloseButton:" destination="Pn0-bn-HnS" eventType="touchUpInside" id="wr3-Jy-tjp"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.42352941179999998" green="0.4549019608" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="c2K-LC-LnG" firstAttribute="leading" secondItem="yxu-gI-yCG" secondAttribute="leading" id="3Tm-bz-AsG"/>
-                                    <constraint firstAttribute="trailing" secondItem="c2K-LC-LnG" secondAttribute="trailing" id="EXm-YU-ggU"/>
-                                    <constraint firstItem="c2K-LC-LnG" firstAttribute="centerX" secondItem="yxu-gI-yCG" secondAttribute="centerX" id="SNL-PB-Vjm"/>
-                                    <constraint firstItem="c2K-LC-LnG" firstAttribute="centerY" secondItem="yxu-gI-yCG" secondAttribute="centerY" id="gHi-0t-PCm"/>
-                                    <constraint firstItem="c2K-LC-LnG" firstAttribute="width" secondItem="yxu-gI-yCG" secondAttribute="width" id="vey-6M-Qek"/>
+                                    <constraint firstAttribute="trailing" secondItem="3h6-yG-3dg" secondAttribute="trailing" id="05f-pR-tDU"/>
+                                    <constraint firstItem="3h6-yG-3dg" firstAttribute="top" secondItem="c2K-LC-LnG" secondAttribute="top" id="6D7-xg-Iq8"/>
+                                    <constraint firstItem="3h6-yG-3dg" firstAttribute="height" secondItem="yxu-gI-yCG" secondAttribute="height" id="6vW-T3-olq"/>
+                                    <constraint firstAttribute="bottom" secondItem="c2K-LC-LnG" secondAttribute="bottom" id="Hcp-0p-kTN"/>
+                                    <constraint firstItem="c2K-LC-LnG" firstAttribute="top" secondItem="yxu-gI-yCG" secondAttribute="top" id="cBs-xq-vZr"/>
+                                    <constraint firstItem="c2K-LC-LnG" firstAttribute="leading" secondItem="yxu-gI-yCG" secondAttribute="leading" id="iy0-5y-CBZ"/>
+                                    <constraint firstItem="3h6-yG-3dg" firstAttribute="leading" secondItem="c2K-LC-LnG" secondAttribute="trailing" id="qbJ-0P-HJC"/>
                                 </constraints>
                             </view>
                         </subviews>

@@ -185,6 +185,10 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             
         }
     }
+
+    @IBAction func CloseButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
     

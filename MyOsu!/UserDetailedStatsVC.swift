@@ -40,7 +40,7 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
             self.SongTable.isHidden = false
             self.PopulateSongNames()
             
-            
+
         }else{
             self.NoHistoryLabel.isHidden = false
             self.SongTable.isHidden = true
