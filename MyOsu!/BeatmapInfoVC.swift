@@ -19,26 +19,48 @@ class SongVC: UIViewController{
     
     override func loadView() {
         view = UIView()
-        print(self.pages)
         let PageDots = UIPageControl(frame: CGRect(x:168, y:130, width:39, height:37))
-        //PageDots.updateCurrentPageDisplay()
+        
         PageDots.numberOfPages = self.pages[1]
         PageDots.currentPage = self.pages[0]
         PageDots.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(PageDots)
-        NSLayoutConstraint(item: PageDots, attribute: .centerX, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item:  PageDots, attribute: .top, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: .top, multiplier: 1, constant: 610).isActive = true
-        NSLayoutConstraint(item:  PageDots, attribute: .bottom, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: PageDots, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  PageDots, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 610).isActive = true
+        NSLayoutConstraint(item:  PageDots, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
         
         
         view.backgroundColor = UIColor(displayP3Red: 108/255, green: 116/255, blue: 194/255, alpha: 1.0)
-        var SongImageView = UIImageView(frame: CGRect(x:123, y:0, width:128, height: 128))
+        let SongImageView = UIImageView()
+        SongImageView.contentMode = .scaleAspectFit
         SongImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(SongImageView)
-        NSLayoutConstraint(item: SongImageView, attribute: .leading, relatedBy: .equal, toItem:view, attribute: .leading, multiplier: 1, constant: 123).isActive = true
-        NSLayoutConstraint(item: SongImageView, attribute: .trailing, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -124).isActive = true
-        NSLayoutConstraint(item: SongImageView, attribute: .top, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: .top, multiplier: 1, constant: 20).isActive = true
-        NSLayoutConstraint(item: SongImageView, attribute: .bottom, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -539).isActive = true
+        NSLayoutConstraint(item: SongImageView, attribute: .leading, relatedBy: .equal, toItem:view, attribute: .leading, multiplier: 1, constant: 16).isActive = true
+        NSLayoutConstraint(item: SongImageView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -259).isActive = true
+        NSLayoutConstraint(item: SongImageView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 20).isActive = true
+        
+        
+        let TempView = UIView()
+        TempView.translatesAutoresizingMaskIntoConstraints = false
+        TempView.backgroundColor = UIColor.clear
+        view.addSubview(TempView)
+        NSLayoutConstraint(item: TempView, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: TempView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  TempView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  TempView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: TempView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 128).isActive = true
+        NSLayoutConstraint(item: TempView, attribute: .top, relatedBy: .equal, toItem: SongImageView, attribute: .bottom, multiplier: 1, constant: 8).isActive = true
+ 
+        
+        let NameLabel = UILabel()
+        NameLabel.text = self.name
+        NameLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(NameLabel)
+        NSLayoutConstraint(item: NameLabel, attribute: .left, relatedBy: .equal, toItem: SongImageView, attribute: .right, multiplier: 1, constant: 16).isActive = true
+        NSLayoutConstraint(item: NameLabel, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: NameLabel, attribute: .top, relatedBy: .equal, toItem: SongImageView, attribute: .top, multiplier: 1, constant: 0).isActive = true
+ 
+        
         
         if self.image != nil{
             SongImageView.image = self.image!
