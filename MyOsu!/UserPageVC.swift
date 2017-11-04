@@ -30,10 +30,8 @@ class UserPageVC: UIPageViewController{
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
-        
-        self.populateViews()
         setViewControllers([views[currentPage]], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
-        
+        self.populateViews()
 
         // Do any additional setup after loading the view.
     }

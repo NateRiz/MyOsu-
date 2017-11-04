@@ -110,7 +110,7 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             for elem in elems.array()
             {
-                print(try elem.text())
+                //print(try elem.text())
                 let text:[String] = try elem.text().components(separatedBy: " ")
                 let id = text[0]
                 var name = ""
