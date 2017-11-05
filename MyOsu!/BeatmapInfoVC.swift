@@ -90,12 +90,7 @@ class SongVC: UIViewController{
 }
 
 class BeatmapInfoVC: UIPageViewController {
-    var name = String()
-    var artist = String()
-    var duration = String()
-    var id = String()
-    var image: UIImage?
-    
+
     
     var SongViews = [SongVC]()
     var SongJsons = [[String:Any]]()
@@ -137,16 +132,6 @@ class BeatmapInfoVC: UIPageViewController {
     }
     
     func CreateViews(){
-        for i in 0..<self.SongJsons.count{
-            let set = SongVC()
-            set.name = self.name
-            set.artist = self.artist
-            set.duration = self.duration
-            set.id = self.id
-            set.image = self.image
-            set.pages = [i, self.SongJsons.count]
-            self.SongViews.append(set)
-        }
         if self.SongViews.count > 0{
             self.CurrentPage = 0
             let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))

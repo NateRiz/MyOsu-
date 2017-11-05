@@ -67,13 +67,6 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let beatmapInfo = self.storyboard!.instantiateViewController(withIdentifier: "beatmapInfo") as! BeatmapInfoVC
-        beatmapInfo.image = self.songImages[indexPath.row]
-        beatmapInfo.name = self.songNames[indexPath.row]
-//        beatmapInfo.artist = self.SearchResults[indexPath.row].artist
-//        beatmapInfo.duration = self.SearchResults[indexPath.row].duration
-//        beatmapInfo.id = self.SearchResults[indexPath.row].id
-        
-        
         self.present(beatmapInfo, animated: true, completion: nil)
     }
     
