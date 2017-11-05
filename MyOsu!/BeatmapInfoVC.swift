@@ -19,8 +19,9 @@ class SongVC: UIViewController{
     
     override func loadView() {
         view = UIView()
-        let PageDots = UIPageControl(frame: CGRect(x:168, y:130, width:39, height:37))
+        view.backgroundColor = UIColor(displayP3Red: 108/255, green: 116/255, blue: 194/255, alpha: 1.0)
         
+        let PageDots = UIPageControl(frame: CGRect(x:168, y:130, width:39, height:37))
         PageDots.numberOfPages = self.pages[1]
         PageDots.currentPage = self.pages[0]
         PageDots.translatesAutoresizingMaskIntoConstraints = false
@@ -30,14 +31,18 @@ class SongVC: UIViewController{
         NSLayoutConstraint(item:  PageDots, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
         
         
-        view.backgroundColor = UIColor(displayP3Red: 108/255, green: 116/255, blue: 194/255, alpha: 1.0)
         let SongImageView = UIImageView()
         SongImageView.contentMode = .scaleAspectFit
         SongImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(SongImageView)
         NSLayoutConstraint(item: SongImageView, attribute: .leading, relatedBy: .equal, toItem:view, attribute: .leading, multiplier: 1, constant: 16).isActive = true
-        NSLayoutConstraint(item: SongImageView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -259).isActive = true
         NSLayoutConstraint(item: SongImageView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 20).isActive = true
+        NSLayoutConstraint(item: SongImageView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -259).isActive = true
+        if self.image != nil{
+            SongImageView.image = self.image!
+        }else{
+            print("image is nil :(")
+        }
         
         
         let TempView = UIView()
@@ -52,21 +57,32 @@ class SongVC: UIViewController{
         NSLayoutConstraint(item: TempView, attribute: .top, relatedBy: .equal, toItem: SongImageView, attribute: .bottom, multiplier: 1, constant: 8).isActive = true
  
         
+        let StaticStack = UIStackView() //Static parts of each set.. name, artist, etc
+        StaticStack.translatesAutoresizingMaskIntoConstraints = false
+        StaticStack.axis = .vertical
+        StaticStack.distribution = .fillProportionally
+        StaticStack.backgroundColor = .red
+        view.addSubview(StaticStack)
+        NSLayoutConstraint(item: StaticStack, attribute: .leading, relatedBy: .equal, toItem: SongImageView, attribute: .trailing, multiplier: 1, constant: 8).isActive = true
+        NSLayoutConstraint(item: StaticStack, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: StaticStack, attribute: .top, relatedBy: .equal, toItem: SongImageView, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: StaticStack, attribute: .bottom, relatedBy: .equal, toItem: SongImageView, attribute: .bottom, multiplier: 1, constant:0).isActive = true
+        
+        
+        
         let NameLabel = UILabel()
+        NameLabel.font = UIFont(name: "System", size: 18)
         NameLabel.text = self.name
-        NameLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(NameLabel)
-        NSLayoutConstraint(item: NameLabel, attribute: .left, relatedBy: .equal, toItem: SongImageView, attribute: .right, multiplier: 1, constant: 16).isActive = true
-        NSLayoutConstraint(item: NameLabel, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: NameLabel, attribute: .top, relatedBy: .equal, toItem: SongImageView, attribute: .top, multiplier: 1, constant: 0).isActive = true
- 
-        
-        
-        if self.image != nil{
-            SongImageView.image = self.image!
-        }else{
-            print("image is nil :(")
-        }
+        StaticStack.addArrangedSubview(NameLabel)
+        let ArtistLabel = UILabel()
+        ArtistLabel.font = UIFont(name: "System", size: 14)
+        ArtistLabel.text = self.artist
+        ArtistLabel.textColor = UIColor.gray
+        StaticStack.addArrangedSubview(ArtistLabel)
+        let DurationLabel = UILabel()
+        DurationLabel.text = self.duration
+        DurationLabel.font = UIFont(name: "System", size: 14)
+        StaticStack.addArrangedSubview(DurationLabel)
         
         
     }
@@ -82,6 +98,7 @@ class BeatmapInfoVC: UIPageViewController {
     
     
     var SongViews = [SongVC]()
+    var SongJsons = [[String:Any]]()
     var CurrentPage = 0
     
     required init?(coder aDecoder: NSCoder) {
@@ -90,11 +107,8 @@ class BeatmapInfoVC: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.callAPI()
-
-
-        
+        self.CreateViews()
+    
         
         // Do any additional setup after loading the view.
     }
@@ -122,38 +136,32 @@ class BeatmapInfoVC: UIPageViewController {
         }
     }
     
-    func callAPI(){
-        Alamofire.request("https://osu.ppy.sh/api/get_beatmaps?&k=374c71b25b90368c6a0f3401983325ff98443313&s="+self.id).responseJSON { response in
-            if let json = response.result.value {
-                //print("JSON: \(json)") // serialized json response
-                if let JsonList = json as? [[String:Any]]{
-                    for i in 0..<JsonList.count{
-                        let set = SongVC()
-                        set.name = self.name
-                        set.image = self.image
-                        set.artist = self.artist
-                        set.duration = self.duration
-                        set.id = self.id
-                        set.pages = [i,JsonList.count]
-                        self.SongViews.append(set)
-                    }
-                    if self.SongViews.count > 0{
-                        self.CurrentPage = 0
-                        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-                        swipeLeft.direction = .left
-                        self.view.addGestureRecognizer(swipeLeft)
-                        
-                        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-                        swipeRight.direction = .right
-                        self.view.addGestureRecognizer(swipeRight)
-                        self.setViewControllers([self.SongViews[self.CurrentPage]], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
-                        
-                    }
-                }
-                
-            }
+    func CreateViews(){
+        for i in 0..<self.SongJsons.count{
+            let set = SongVC()
+            set.name = self.name
+            set.artist = self.artist
+            set.duration = self.duration
+            set.id = self.id
+            set.image = self.image
+            set.pages = [i, self.SongJsons.count]
+            self.SongViews.append(set)
+        }
+        if self.SongViews.count > 0{
+            self.CurrentPage = 0
+            let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+            swipeLeft.direction = .left
+            self.view.addGestureRecognizer(swipeLeft)
+            
+            let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+            swipeRight.direction = .right
+            self.view.addGestureRecognizer(swipeRight)
+            self.setViewControllers([self.SongViews[self.CurrentPage]], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            
         }
     }
+    
+
     
     func mod(_ a: Int, _ n: Int) -> Int {
         precondition(n > 0, "modulus must be positive")

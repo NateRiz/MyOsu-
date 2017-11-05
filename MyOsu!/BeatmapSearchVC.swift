@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftSoup
+import Alamofire
 
 class SongSearchCell: UITableViewCell{
     @IBOutlet weak var SongImage: UIImageView!
@@ -42,6 +43,7 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var SearchResults = [Song]()
     @IBOutlet weak var SongTable: UITableView!
     @IBOutlet weak var SongSearchbar: UISearchBar!
+    @IBOutlet weak var LoadingView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,15 +63,18 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+        self.LoadingView.isHidden = false
+        self.SongTable.isHidden = true
+        
         let beatmapInfo = self.storyboard!.instantiateViewController(withIdentifier: "beatmapInfo") as! BeatmapInfoVC
-        beatmapInfo.image = self.SearchResults[indexPath.row].image
-        beatmapInfo.name = self.SearchResults[indexPath.row].name
-        beatmapInfo.artist = self.SearchResults[indexPath.row].artist
-        beatmapInfo.duration = self.SearchResults[indexPath.row].duration
-        beatmapInfo.id = self.SearchResults[indexPath.row].id
-         
- 
-        self.present(beatmapInfo, animated: true, completion: nil)
+        
+        callAPI(song:SearchResults[indexPath.row], beatmapInfo:beatmapInfo){
+            self.present(beatmapInfo, animated: true, completion: nil)
+        }
+        
+        
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -196,6 +201,34 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }))
             
         }
+    }
+    
+    func callAPI(song:Song, beatmapInfo:BeatmapInfoVC, completion: @escaping ()->()) {
+        Alamofire.request("https://osu.ppy.sh/api/get_beatmaps?&k=374c71b25b90368c6a0f3401983325ff98443313&s="+song.id).responseJSON { response in
+            if let json = response.result.value {
+                //print("JSON: \(json)") // serialized json response
+                if let JsonList = json as? [[String:Any]]{
+                    beatmapInfo.SongJsons = JsonList
+                    for i in 0..<JsonList.count{
+                        let set = SongVC()
+                        set.name = song.name
+                        set.image = song.image
+                        set.artist = song.artist
+                        set.duration = song.duration
+                        set.id = song.id
+                        set.pages = [i,JsonList.count]
+                        beatmapInfo.SongViews.append(set)
+                        
+                    }
+                    
+                    
+                }
+                
+            }
+
+            return completion()
+        }
+        
     }
 
     @IBAction func CloseButton(_ sender: Any) {
