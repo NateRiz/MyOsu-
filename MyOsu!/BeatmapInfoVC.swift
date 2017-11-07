@@ -16,59 +16,45 @@ class SongVC: UIViewController{
     var duration = ""
     var id = ""
     var pages = [Int]() // [self pg number, total page number]
+    var json = [String:Any]()
     
     override func loadView() {
         view = UIView()
         view.backgroundColor = UIColor(displayP3Red: 108/255, green: 116/255, blue: 194/255, alpha: 1.0)
         
-        let PageDots = UIPageControl(frame: CGRect(x:168, y:130, width:39, height:37))
-        PageDots.numberOfPages = self.pages[1]
-        PageDots.currentPage = self.pages[0]
-        PageDots.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(PageDots)
-        NSLayoutConstraint(item: PageDots, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item:  PageDots, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 610).isActive = true
-        NSLayoutConstraint(item:  PageDots, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        let StaticView = UIView()
+        StaticView.backgroundColor = UIColor(displayP3Red: 255/255, green: 176/255, blue: 233/255, alpha: 1.0)
+        StaticView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(StaticView)
+        NSLayoutConstraint(item: StaticView, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  StaticView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  StaticView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  StaticView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 20).isActive = true
         
         
         let SongImageView = UIImageView()
         SongImageView.contentMode = .scaleAspectFit
         SongImageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(SongImageView)
-        NSLayoutConstraint(item: SongImageView, attribute: .leading, relatedBy: .equal, toItem:view, attribute: .leading, multiplier: 1, constant: 16).isActive = true
-        NSLayoutConstraint(item: SongImageView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 20).isActive = true
-        NSLayoutConstraint(item: SongImageView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -259).isActive = true
+        StaticView.addSubview(SongImageView)
+        NSLayoutConstraint(item: SongImageView, attribute: .leading, relatedBy: .equal, toItem:StaticView, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: SongImageView, attribute: .top, relatedBy: .equal, toItem: StaticView, attribute: .top, multiplier: 1, constant: 4).isActive = true
+                NSLayoutConstraint(item: SongImageView, attribute: .bottom, relatedBy: .equal, toItem: StaticView, attribute: .bottom, multiplier: 1, constant: -4).isActive = true
+        NSLayoutConstraint(item: SongImageView, attribute: .trailing, relatedBy: .equal, toItem: StaticView, attribute: .trailing, multiplier: 1, constant: -259).isActive = true
         if self.image != nil{
             SongImageView.image = self.image!
         }else{
             print("image is nil :(")
         }
-        
-        
-        let TempView = UIView()
-        TempView.translatesAutoresizingMaskIntoConstraints = false
-        TempView.backgroundColor = UIColor.clear
-        view.addSubview(TempView)
-        NSLayoutConstraint(item: TempView, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: TempView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item:  TempView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item:  TempView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: TempView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 128).isActive = true
-        NSLayoutConstraint(item: TempView, attribute: .top, relatedBy: .equal, toItem: SongImageView, attribute: .bottom, multiplier: 1, constant: 8).isActive = true
- 
-        
+      
         let StaticStack = UIStackView() //Static parts of each set.. name, artist, etc
         StaticStack.translatesAutoresizingMaskIntoConstraints = false
         StaticStack.axis = .vertical
         StaticStack.distribution = .fillProportionally
-        StaticStack.backgroundColor = .red
-        view.addSubview(StaticStack)
+        StaticView.addSubview(StaticStack)
         NSLayoutConstraint(item: StaticStack, attribute: .leading, relatedBy: .equal, toItem: SongImageView, attribute: .trailing, multiplier: 1, constant: 8).isActive = true
-        NSLayoutConstraint(item: StaticStack, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: StaticStack, attribute: .right, relatedBy: .equal, toItem: StaticView, attribute: .right, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item: StaticStack, attribute: .top, relatedBy: .equal, toItem: SongImageView, attribute: .top, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: StaticStack, attribute: .bottom, relatedBy: .equal, toItem: SongImageView, attribute: .bottom, multiplier: 1, constant:0).isActive = true
-        
-        
+        NSLayoutConstraint(item: StaticStack, attribute: .bottom, relatedBy: .equal, toItem: StaticView, attribute: .bottom, multiplier: 1, constant:0).isActive = true
         
         let NameLabel = UILabel()
         NameLabel.font = UIFont(name: "System", size: 18)
@@ -85,6 +71,84 @@ class SongVC: UIViewController{
         StaticStack.addArrangedSubview(DurationLabel)
         
         
+        
+        let InfoScroll = UIScrollView()
+        InfoScroll.translatesAutoresizingMaskIntoConstraints = false
+        InfoScroll.backgroundColor = UIColor(displayP3Red: 255/255, green: 176/255, blue: 233/255, alpha: 1.0)
+        view.addSubview(InfoScroll)
+        NSLayoutConstraint(item: InfoScroll, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  InfoScroll, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  InfoScroll, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: InfoScroll, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 128).isActive = true
+        NSLayoutConstraint(item: InfoScroll, attribute: .top, relatedBy: .equal, toItem: StaticView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        
+        let InfoView = UIView()
+        InfoView.translatesAutoresizingMaskIntoConstraints = false
+        InfoScroll.addSubview(InfoView)
+        NSLayoutConstraint(item: InfoView, attribute: .leading, relatedBy: .equal, toItem: InfoScroll, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  InfoView, attribute: .trailing, relatedBy: .equal, toItem: InfoScroll, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  InfoView, attribute: .top, relatedBy: .equal, toItem: InfoScroll, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  InfoView, attribute: .bottom, relatedBy: .equal, toItem: InfoScroll, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        
+        
+        
+        let InfoStack = UIStackView()
+        InfoStack.axis = .vertical
+        StaticStack.distribution = .fillEqually
+        InfoStack.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(InfoStack)
+        NSLayoutConstraint(item: InfoStack, attribute: .top, relatedBy: .equal, toItem: InfoView, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: InfoStack, attribute: .leading, relatedBy: .equal, toItem: InfoView, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  InfoStack, attribute: .trailing, relatedBy: .equal, toItem: InfoView, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  InfoStack, attribute: .bottom, relatedBy: .equal, toItem: InfoView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        
+
+
+        print(self.json)
+        if let difficulty = self.json["version"] as? String{
+            let versionLabel = UILabel()
+            versionLabel.textColor = .white
+            versionLabel.text = "Version: " + difficulty
+            InfoStack.addArrangedSubview(versionLabel)
+        }
+        if let circle_size = self.json["diff_size"] as? String{
+            let circle = UILabel()
+            circle.textColor = .white
+            circle.text = "Circle Size: " + circle_size
+            InfoStack.addArrangedSubview(circle)
+        }
+        if let diff_drain = self.json["diff_drain"] as? String{
+            let drain = UILabel()
+            drain.textColor = .white
+            drain.text = "Drain: " + diff_drain
+            InfoStack.addArrangedSubview(drain)
+        }
+        if let diff_overall = self.json["diff_overall"] as? String{
+            let accuracy = UILabel()
+            accuracy.textColor = .white
+            accuracy.text = "Accuracy: " + diff_overall
+            InfoStack.addArrangedSubview(accuracy)
+        }
+        if let diff_approach = self.json["diff_approach"] as? String{
+            let approach = UILabel()
+            approach.textColor = .white
+            approach.text = "Approach Rate: " + diff_approach
+            InfoStack.addArrangedSubview(approach)
+        }
+        
+        
+        
+        
+        
+
+        let PageDots = UIPageControl(frame: CGRect(x:168, y:130, width:39, height:37))
+        PageDots.numberOfPages = self.pages[1]
+        PageDots.currentPage = self.pages[0]
+        PageDots.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(PageDots)
+        NSLayoutConstraint(item: PageDots, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  PageDots, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 610).isActive = true
+        NSLayoutConstraint(item:  PageDots, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
     }
     
 }
@@ -93,7 +157,6 @@ class BeatmapInfoVC: UIPageViewController {
 
     
     var SongViews = [SongVC]()
-    var SongJsons = [[String:Any]]()
     var CurrentPage = 0
     
     required init?(coder aDecoder: NSCoder) {
@@ -132,6 +195,7 @@ class BeatmapInfoVC: UIPageViewController {
     }
     
     func CreateViews(){
+        
         if self.SongViews.count > 0{
             self.CurrentPage = 0
             let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))

@@ -208,7 +208,7 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             if let json = response.result.value {
                 //print("JSON: \(json)") // serialized json response
                 if let JsonList = json as? [[String:Any]]{
-                    beatmapInfo.SongJsons = JsonList
+                    
                     for i in 0..<JsonList.count{
                         let set = SongVC()
                         set.name = song.name
@@ -217,6 +217,7 @@ class BeatmapSearchVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                         set.duration = song.duration
                         set.id = song.id
                         set.pages = [i,JsonList.count]
+                        set.json = JsonList[i]
                         beatmapInfo.SongViews.append(set)
                         
                     }
