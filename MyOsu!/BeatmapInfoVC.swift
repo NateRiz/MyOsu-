@@ -9,7 +9,33 @@
 import UIKit
 import Alamofire
 
-class SongVC: UIViewController{
+
+class BeatmapInfoCell: UITableViewCell{
+
+    let info = UILabel()
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        backgroundColor = .clear
+        self.contentView.addSubview(info)
+        self.contentView.backgroundColor = .clear
+        info.textColor = .white
+        info.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item:  info, attribute: .centerY, relatedBy: .equal, toItem: self.contentView, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  info, attribute: .leading, relatedBy: .equal, toItem: self.contentView, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+        print("added a label...")
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+}
+
+class SongVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
+
+    
     var image: UIImage?
     var name = ""
     var artist = ""
@@ -17,6 +43,9 @@ class SongVC: UIViewController{
     var id = ""
     var pages = [Int]() // [self pg number, total page number]
     var json = [String:Any]()
+    var info = [String]()
+    let InfoTable = UITableView()
+    let cellReuseIdentifier = "beatmapInfoCell"
     
     override func loadView() {
         view = UIView()
@@ -84,60 +113,45 @@ class SongVC: UIViewController{
         
         let InfoView = UIView()
         InfoView.translatesAutoresizingMaskIntoConstraints = false
+        InfoView.backgroundColor = .clear
         InfoScroll.addSubview(InfoView)
         NSLayoutConstraint(item: InfoView, attribute: .leading, relatedBy: .equal, toItem: InfoScroll, attribute: .leading, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item:  InfoView, attribute: .trailing, relatedBy: .equal, toItem: InfoScroll, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item:  InfoView, attribute: .top, relatedBy: .equal, toItem: InfoScroll, attribute: .top, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item:  InfoView, attribute: .bottom, relatedBy: .equal, toItem: InfoScroll, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  InfoView, attribute: .height, relatedBy: .equal, toItem: InfoScroll, attribute: .height, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  InfoView, attribute: .top, relatedBy: .equal, toItem: InfoScroll, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  InfoView, attribute: .width, relatedBy: .equal, toItem: InfoScroll, attribute: .width, multiplier: 1, constant: 0).isActive = true
         
         
-        
-        let InfoStack = UIStackView()
-        InfoStack.axis = .vertical
-        StaticStack.distribution = .fillEqually
-        InfoStack.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(InfoStack)
-        NSLayoutConstraint(item: InfoStack, attribute: .top, relatedBy: .equal, toItem: InfoView, attribute: .top, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: InfoStack, attribute: .leading, relatedBy: .equal, toItem: InfoView, attribute: .leading, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item:  InfoStack, attribute: .trailing, relatedBy: .equal, toItem: InfoView, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item:  InfoStack, attribute: .bottom, relatedBy: .equal, toItem: InfoView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
-        
-
-
-        print(self.json)
         if let difficulty = self.json["version"] as? String{
-            let versionLabel = UILabel()
-            versionLabel.textColor = .white
-            versionLabel.text = "Version: " + difficulty
-            InfoStack.addArrangedSubview(versionLabel)
+            self.info.append("Version: " + difficulty)
         }
         if let circle_size = self.json["diff_size"] as? String{
-            let circle = UILabel()
-            circle.textColor = .white
-            circle.text = "Circle Size: " + circle_size
-            InfoStack.addArrangedSubview(circle)
+            self.info.append("Circle Size: " + circle_size)
         }
         if let diff_drain = self.json["diff_drain"] as? String{
-            let drain = UILabel()
-            drain.textColor = .white
-            drain.text = "Drain: " + diff_drain
-            InfoStack.addArrangedSubview(drain)
+            self.info.append("Drain: " + diff_drain)
         }
         if let diff_overall = self.json["diff_overall"] as? String{
-            let accuracy = UILabel()
-            accuracy.textColor = .white
-            accuracy.text = "Accuracy: " + diff_overall
-            InfoStack.addArrangedSubview(accuracy)
+            self.info.append("Accuracy: " + diff_overall)
         }
         if let diff_approach = self.json["diff_approach"] as? String{
-            let approach = UILabel()
-            approach.textColor = .white
-            approach.text = "Approach Rate: " + diff_approach
-            InfoStack.addArrangedSubview(approach)
+            self.info.append("Approach Rate: " + diff_approach)
         }
         
-        
-        
+        self.InfoTable.delegate = self
+        self.InfoTable.dataSource = self
+        self.InfoTable.rowHeight = 64
+        self.InfoTable.separatorStyle = .none
+        self.InfoTable.register(BeatmapInfoCell.self, forCellReuseIdentifier: self.cellReuseIdentifier)
+        self.InfoTable.translatesAutoresizingMaskIntoConstraints = false
+        self.InfoTable.backgroundColor = .clear
+        InfoView.addSubview(self.InfoTable)
+        NSLayoutConstraint(item: self.InfoTable, attribute: .top, relatedBy: .equal, toItem: InfoView, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: self.InfoTable, attribute: .leading, relatedBy: .equal, toItem: InfoView, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  self.InfoTable, attribute: .trailing, relatedBy: .equal, toItem: InfoView, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  self.InfoTable, attribute: .bottom, relatedBy: .equal, toItem: InfoView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  self.InfoTable, attribute: .width, relatedBy: .equal, toItem: InfoView, attribute: .width, multiplier: 1, constant: 0).isActive = true
         
         
 
@@ -149,6 +163,20 @@ class SongVC: UIViewController{
         NSLayoutConstraint(item: PageDots, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item:  PageDots, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 610).isActive = true
         NSLayoutConstraint(item:  PageDots, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.info.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.InfoTable.dequeueReusableCell(withIdentifier: self.cellReuseIdentifier, for: indexPath) as! BeatmapInfoCell
+        cell.info.text = self.info[indexPath.row]
+        
+        
+        return cell
     }
     
 }
