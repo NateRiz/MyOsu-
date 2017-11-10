@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftSoup
+import Alamofire
 
 class SongCell : UITableViewCell{
     
@@ -34,6 +35,7 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
         print(self.history)
         self.SongTable.delegate = self
         self.SongTable.dataSource = self
+        self.SongTable.allowsSelection = false
         self.SongTable.rowHeight = 80
         if self.history.count > 0{
             self.NoHistoryLabel.isHidden = true
@@ -63,11 +65,6 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.songNames.count
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        let beatmapInfo = self.storyboard!.instantiateViewController(withIdentifier: "beatmapInfo") as! BeatmapInfoVC
-        self.present(beatmapInfo, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -155,6 +152,5 @@ class UserDetailedStatsVC: UIViewController, UITableViewDelegate, UITableViewDat
             }.resume()
         
     }
-
-
+    
 }

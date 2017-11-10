@@ -20,10 +20,10 @@ class BeatmapInfoCell: UITableViewCell{
         self.contentView.addSubview(info)
         self.contentView.backgroundColor = .clear
         info.textColor = .white
+        info.font = UIFont(name: "System", size: 18)
         info.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint(item:  info, attribute: .centerY, relatedBy: .equal, toItem: self.contentView, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item:  info, attribute: .leading, relatedBy: .equal, toItem: self.contentView, attribute: .leading, multiplier: 1, constant: 0).isActive = true
-        print("added a label...")
 
     }
     
@@ -141,6 +141,7 @@ class SongVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
         self.InfoTable.delegate = self
         self.InfoTable.dataSource = self
+        self.InfoTable.allowsSelection = false
         self.InfoTable.rowHeight = 64
         self.InfoTable.separatorStyle = .none
         self.InfoTable.register(BeatmapInfoCell.self, forCellReuseIdentifier: self.cellReuseIdentifier)
@@ -153,6 +154,15 @@ class SongVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         NSLayoutConstraint(item:  self.InfoTable, attribute: .bottom, relatedBy: .equal, toItem: InfoView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item:  self.InfoTable, attribute: .width, relatedBy: .equal, toItem: InfoView, attribute: .width, multiplier: 1, constant: 0).isActive = true
         
+        
+        let CloseButton = UIButton()
+        CloseButton.setTitle("X", for: .normal)
+        CloseButton.addTarget(self, action: #selector(self.close), for: .touchUpInside)
+        CloseButton.translatesAutoresizingMaskIntoConstraints = false
+        StaticView.addSubview(CloseButton)
+        NSLayoutConstraint(item: CloseButton, attribute: .trailing, relatedBy: .equal, toItem: StaticView, attribute: .trailing, multiplier: 1, constant: 10).isActive = true
+        NSLayoutConstraint(item:  CloseButton, attribute: .top, relatedBy: .equal, toItem: StaticView, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item:  CloseButton, attribute: .leading, relatedBy: .equal, toItem: StaticView, attribute: .leading, multiplier: 1, constant: 343).isActive = true
         
 
         let PageDots = UIPageControl(frame: CGRect(x:168, y:130, width:39, height:37))
@@ -177,6 +187,10 @@ class SongVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
         
         return cell
+    }
+    
+    @objc func close(){
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
